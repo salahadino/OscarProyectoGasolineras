@@ -14,8 +14,16 @@ class InitialControllerBuilder {
         
         let listViewController = ListBuilder().build()
         
+        let navigationController = UINavigationController(rootViewController: listViewController)
         
-        return listViewController
+        navigationController.tabBarItem = UITabBarItem(title: "Gasolineras", image: UIImage.init(systemName: "list.bullet"), tag: 0)
+        
+        let tabBarcontroller = UITabBarController()
+        
+        tabBarcontroller.setViewControllers([navigationController], animated: false)
+        
+        
+        return tabBarcontroller
         
         
     }
