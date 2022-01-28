@@ -13,6 +13,10 @@ class ListBuilder {
     func build() -> UIViewController {
         
         let viewController = ListView.createFromStoryboard()
+        let presenter = ListPresenter()
+        
+        viewController.presenter = presenter
+        presenter.view = viewController
         
         return viewController
         

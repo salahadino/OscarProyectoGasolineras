@@ -16,6 +16,10 @@
 		F53B0C9D27A33FBB00884369 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53B0C9C27A33FBB00884369 /* ListView.swift */; };
 		F53B0C9F27A3400900884369 /* InitialControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53B0C9E27A3400900884369 /* InitialControllerBuilder.swift */; };
 		F53B0CA227A3417100884369 /* ListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53B0CA127A3417100884369 /* ListBuilder.swift */; };
+		F59EDCA827A40D5F007A0CF2 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCA727A40D5F007A0CF2 /* ListPresenter.swift */; };
+		F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */; };
+		F59EDCAD27A43EA0007A0CF2 /* Gasolinera.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */; };
+		F59EDCB027A45185007A0CF2 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCAF27A45185007A0CF2 /* ListInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		F53B0C9C27A33FBB00884369 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		F53B0C9E27A3400900884369 /* InitialControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialControllerBuilder.swift; sourceTree = "<group>"; };
 		F53B0CA127A3417100884369 /* ListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBuilder.swift; sourceTree = "<group>"; };
+		F59EDCA727A40D5F007A0CF2 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
+		F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
+		F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gasolinera.swift; sourceTree = "<group>"; };
+		F59EDCAF27A45185007A0CF2 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,7 @@
 		F53B0C9827A33F2D00884369 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F59EDCAB27A43E6C007A0CF2 /* Models */,
 				F53B0C9927A33F5900884369 /* List */,
 				F53B0C9E27A3400900884369 /* InitialControllerBuilder.swift */,
 			);
@@ -85,6 +94,8 @@
 		F53B0C9927A33F5900884369 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				F59EDCAE27A45170007A0CF2 /* Interactor */,
+				F59EDCA627A40D4B007A0CF2 /* Presenter */,
 				F53B0CA027A3415600884369 /* UI */,
 				F53B0CA127A3417100884369 /* ListBuilder.swift */,
 			);
@@ -96,8 +107,33 @@
 			children = (
 				F53B0C9A27A33F9D00884369 /* ListView.storyboard */,
 				F53B0C9C27A33FBB00884369 /* ListView.swift */,
+				F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		F59EDCA627A40D4B007A0CF2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F59EDCA727A40D5F007A0CF2 /* ListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F59EDCAB27A43E6C007A0CF2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F59EDCAE27A45170007A0CF2 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F59EDCAF27A45185007A0CF2 /* ListInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,10 +207,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F59EDCB027A45185007A0CF2 /* ListInteractor.swift in Sources */,
+				F59EDCA827A40D5F007A0CF2 /* ListPresenter.swift in Sources */,
 				F53B0C9D27A33FBB00884369 /* ListView.swift in Sources */,
 				F53B0CA227A3417100884369 /* ListBuilder.swift in Sources */,
 				F53B0C8927A33EE000884369 /* ViewController.swift in Sources */,
+				F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */,
 				F53B0C8527A33EE000884369 /* AppDelegate.swift in Sources */,
+				F59EDCAD27A43EA0007A0CF2 /* Gasolinera.swift in Sources */,
 				F53B0C8727A33EE000884369 /* SceneDelegate.swift in Sources */,
 				F53B0C9F27A3400900884369 /* InitialControllerBuilder.swift in Sources */,
 			);

@@ -7,8 +7,21 @@
 
 import UIKit
 
-class ListView: UIViewController {
+protocol ListViewContract {
     
+    var presenter: ListPresenterContract? {set get}
+    func reloadData()
+
+}
+
+class ListView: UIViewController, ListViewContract {
+  
+    
+    
+ 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var presenter: ListPresenterContract?
     
     static func createFromStoryboard() -> ListView {
         
@@ -17,11 +30,43 @@ class ListView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        tableView.delegate = self
+        presenter?.viewDidLoad()
     }
     
-
     
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+}
 
+
+
+extension ListView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let viewModel = presenter?.cellViewModel(at: indexPath) else { fatalError()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ListViewCell else {
+            fatalError()
+        }
+        
+        cell.configure(viewModel: viewModel)
+        cell.rotulo.text = "rotulo"
+        return cell
+   
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter?.numItems ?? 0
+        
+    }
+}
+
+extension ListView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectItem(at: indexPath)
+    }
 }
