@@ -14,9 +14,11 @@ class ListBuilder {
         
         let viewController = ListView.createFromStoryboard()
         let presenter = ListPresenter()
+        let interactor = ListInteractor()
         
         viewController.presenter = presenter
         presenter.view = viewController
+        presenter.interactor = interactor
         
         return viewController
         

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol ListInteractorContract {
     var output: ListInteractorOutputContract? {get set}
@@ -30,6 +31,13 @@ class ListInteractor: ListInteractorContract {
         }
         
         let request = URLRequest(url: url)
+        
+        AF.request(request).responseDecodable { (response: DataResponse<Gasolinera, AFError>) in
+            switch response.result {
+            case .success(let gas): self.output?.didFetch(gas: gas.listaEESSPrecio)
+            case .failure: self.output?.fetchDidFail()
+            }
+        }.validate()
         
         
         

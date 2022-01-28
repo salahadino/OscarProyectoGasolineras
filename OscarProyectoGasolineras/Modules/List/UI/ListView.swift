@@ -54,7 +54,7 @@ extension ListView: UITableViewDataSource {
         }
         
         cell.configure(viewModel: viewModel)
-        cell.rotulo.text = "rotulo"
+        
         return cell
    
     }

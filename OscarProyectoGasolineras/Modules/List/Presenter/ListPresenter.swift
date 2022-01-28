@@ -63,6 +63,10 @@ class ListPresenter: ListPresenterContract {
 }
 
 extension ListPresenter: ListInteractorOutputContract {
+    func fetchDidFail() {
+        print("Error")
+    }
+    
     func didFetch(gas: [ListaEESSPrecio]) {
         self.gas = gas
     }
