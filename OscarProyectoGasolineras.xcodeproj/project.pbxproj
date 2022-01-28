@@ -21,6 +21,8 @@
 		F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */; };
 		F59EDCAD27A43EA0007A0CF2 /* Gasolinera.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */; };
 		F59EDCB027A45185007A0CF2 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCAF27A45185007A0CF2 /* ListInteractor.swift */; };
+		F5ABCB0727A4964B00D98492 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5ABCB0627A4964B00D98492 /* DetailView.storyboard */; };
+		F5ABCB0927A4967600D98492 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABCB0827A4967600D98492 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gasolinera.swift; sourceTree = "<group>"; };
 		F59EDCAF27A45185007A0CF2 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		F5ABCB0627A4964B00D98492 /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
+		F5ABCB0827A4967600D98492 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,6 @@
 				87F471D97D6D69FD1E85D3DA /* Pods-OscarProyectoGasolineras.debug.xcconfig */,
 				665EEF6E257712061DC00247 /* Pods-OscarProyectoGasolineras.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -109,6 +112,7 @@
 		F53B0C9827A33F2D00884369 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F5ABCB0327A4954A00D98492 /* Detail */,
 				F59EDCAB27A43E6C007A0CF2 /* Models */,
 				F53B0C9927A33F5900884369 /* List */,
 				F53B0C9E27A3400900884369 /* InitialControllerBuilder.swift */,
@@ -159,6 +163,15 @@
 				F59EDCAF27A45185007A0CF2 /* ListInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F5ABCB0327A4954A00D98492 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F5ABCB0627A4964B00D98492 /* DetailView.storyboard */,
+				F5ABCB0827A4967600D98492 /* DetailView.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +236,7 @@
 			files = (
 				F53B0C9127A33EE200884369 /* LaunchScreen.storyboard in Resources */,
 				F53B0C9B27A33F9D00884369 /* ListView.storyboard in Resources */,
+				F5ABCB0727A4964B00D98492 /* DetailView.storyboard in Resources */,
 				F53B0C8E27A33EE200884369 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +295,7 @@
 				F53B0C9D27A33FBB00884369 /* ListView.swift in Sources */,
 				F53B0CA227A3417100884369 /* ListBuilder.swift in Sources */,
 				F53B0C8927A33EE000884369 /* ViewController.swift in Sources */,
+				F5ABCB0927A4967600D98492 /* DetailView.swift in Sources */,
 				F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */,
 				F53B0C8527A33EE000884369 /* AppDelegate.swift in Sources */,
 				F59EDCAD27A43EA0007A0CF2 /* Gasolinera.swift in Sources */,
