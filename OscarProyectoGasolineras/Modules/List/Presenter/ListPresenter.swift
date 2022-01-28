@@ -15,14 +15,11 @@ protocol ListPresenterContract: AnyObject {
     func cellViewModel(at indexPath: IndexPath) -> ListCellViewModel
     func didSelectItem(at indexPath: IndexPath)
     func viewDidLoad()
-    
-    
-    
+   
 }
 
 class ListPresenter: ListPresenterContract {
    
-    
     var view: ListViewContract?
     var interactor: ListInteractorContract?
     
@@ -68,8 +65,10 @@ extension ListPresenter: ListInteractorOutputContract {
     }
     
     func didFetch(gas: [ListaEESSPrecio]) {
+        
         self.gas = gas
+        self.gas.removeAll() {$0.precioGLP == ""}
+        
     }
-    
     
 }
