@@ -11,6 +11,7 @@ protocol ListPresenterContract: AnyObject {
     
     var view: ListViewContract? {set get}
     var interactor: ListInteractorContract? {set get}
+    var wireframe: ListWireframeContract? {set get}
     var numItems: Int {get}
     func cellViewModel(at indexPath: IndexPath) -> ListCellViewModel
     func didSelectItem(at indexPath: IndexPath)
@@ -22,6 +23,7 @@ class ListPresenter: ListPresenterContract {
    
     var view: ListViewContract?
     var interactor: ListInteractorContract?
+    var wireframe: ListWireframeContract?
     
     private var gas = [ListaEESSPrecio]() {
         
@@ -43,6 +45,8 @@ class ListPresenter: ListPresenterContract {
     }
     
     func didSelectItem(at indexPath: IndexPath) {
+        let gasolinera = gas[indexPath.row]
+        wireframe?.navigate(to: gasolinera)
         
     }
     

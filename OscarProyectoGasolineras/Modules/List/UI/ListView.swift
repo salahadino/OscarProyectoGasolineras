@@ -69,5 +69,6 @@ extension ListView: UITableViewDataSource {
 extension ListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.didSelectItem(at: indexPath)
+        //print(indexPath)
     }
 }
