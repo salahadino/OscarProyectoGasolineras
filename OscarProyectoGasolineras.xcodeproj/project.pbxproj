@@ -26,6 +26,8 @@
 		F5C1D6B227A5634600C8DBB0 /* ListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6B127A5634600C8DBB0 /* ListWireframe.swift */; };
 		F5C1D6B527A58AB500C8DBB0 /* GasProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6B427A58AB500C8DBB0 /* GasProvider.swift */; };
 		F5C1D6B727A5A15500C8DBB0 /* ListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6B627A5A15500C8DBB0 /* ListBuilder.swift */; };
+		F5C1D6B927A5B43C00C8DBB0 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6B827A5B43C00C8DBB0 /* DetailPresenter.swift */; };
+		F5C1D6BB27A5EC7900C8DBB0 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6BA27A5EC7900C8DBB0 /* DetailInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		F5C1D6B127A5634600C8DBB0 /* ListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWireframe.swift; sourceTree = "<group>"; };
 		F5C1D6B427A58AB500C8DBB0 /* GasProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasProvider.swift; sourceTree = "<group>"; };
 		F5C1D6B627A5A15500C8DBB0 /* ListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBuilder.swift; sourceTree = "<group>"; };
+		F5C1D6B827A5B43C00C8DBB0 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		F5C1D6BA27A5EC7900C8DBB0 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +127,6 @@
 				F59EDCAB27A43E6C007A0CF2 /* Models */,
 				F53B0C9927A33F5900884369 /* List */,
 				F53B0C9E27A3400900884369 /* InitialControllerBuilder.swift */,
-				F5C1D6B627A5A15500C8DBB0 /* ListBuilder.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -131,6 +134,7 @@
 		F53B0C9927A33F5900884369 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				F5C1D6B627A5A15500C8DBB0 /* ListBuilder.swift */,
 				F5C1D6B027A5633000C8DBB0 /* Wireframe */,
 				F59EDCAE27A45170007A0CF2 /* Interactor */,
 				F59EDCA627A40D4B007A0CF2 /* Presenter */,
@@ -179,6 +183,8 @@
 				F5ABCB0627A4964B00D98492 /* DetailView.storyboard */,
 				F5ABCB0827A4967600D98492 /* DetailView.swift */,
 				F5C1D6AE27A549C800C8DBB0 /* DetailBuilder.swift */,
+				F5C1D6B827A5B43C00C8DBB0 /* DetailPresenter.swift */,
+				F5C1D6BA27A5EC7900C8DBB0 /* DetailInteractor.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -323,12 +329,14 @@
 				F5ABCB0927A4967600D98492 /* DetailView.swift in Sources */,
 				F5C1D6B727A5A15500C8DBB0 /* ListBuilder.swift in Sources */,
 				F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */,
+				F5C1D6B927A5B43C00C8DBB0 /* DetailPresenter.swift in Sources */,
 				F5C1D6B527A58AB500C8DBB0 /* GasProvider.swift in Sources */,
 				F53B0C8527A33EE000884369 /* AppDelegate.swift in Sources */,
 				F5C1D6AF27A549C800C8DBB0 /* DetailBuilder.swift in Sources */,
 				F59EDCAD27A43EA0007A0CF2 /* Gasolinera.swift in Sources */,
 				F53B0C8727A33EE000884369 /* SceneDelegate.swift in Sources */,
 				F53B0C9F27A3400900884369 /* InitialControllerBuilder.swift in Sources */,
+				F5C1D6BB27A5EC7900C8DBB0 /* DetailInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

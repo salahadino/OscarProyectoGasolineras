@@ -7,6 +7,13 @@
 
 import UIKit
 
+protocol DetailViewContract {
+    
+    var presenter: DetailPresenterContract? {get set}
+    func reloadData()
+    
+}
+
 struct DetailViewModel {
     
     let rotulo: String?
@@ -17,8 +24,13 @@ struct DetailViewModel {
     let logo: UIImage?
 }
 
-class DetailView: UIViewController {
-
+class DetailView: UIViewController, DetailViewContract {
+   
+    
+    
+    var presenter: DetailPresenterContract?
+    
+    
     @IBOutlet weak var precio: UILabel!
     @IBOutlet weak var localidad: UILabel!
     @IBOutlet weak var direccion: UILabel!
@@ -31,19 +43,36 @@ class DetailView: UIViewController {
         return UIStoryboard(name: "DetailView", bundle: .main).instantiateViewController(withIdentifier: "DetailView") as! DetailView
     }
     
-    var viewModel: DetailViewModel?
+    var viewModel: DetailViewModel? 
     var gasID: String?
     
-   
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //configure(with: viewModel)
         
-        rotulo.text = gasID
+        presenter?.idGas = gasID
+        presenter?.viewDidLoad()
+//        viewModel = presenter?.viewModel()
+        
+        
+       // configure(with: viewModel)
+        
+        
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    func reloadData() {
+        
+        precio.text = presenter?.gasolineraABuscar?.precioGLP
+        
+        print(presenter?.gasolineraABuscar)
+        //configure(with: viewModel)
     }
     
     func configure(with viewModel: DetailViewModel?) {
