@@ -16,9 +16,6 @@ protocol ListViewContract {
 
 class ListView: UIViewController, ListViewContract {
   
-    
-    
- 
     @IBOutlet weak var tableView: UITableView!
     
     var presenter: ListPresenterContract?
@@ -69,6 +66,6 @@ extension ListView: UITableViewDataSource {
 extension ListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.didSelectItem(at: indexPath)
-        //print(indexPath)
+        
     }
 }

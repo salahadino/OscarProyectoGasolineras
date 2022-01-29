@@ -16,7 +16,6 @@
 		F53B0C9B27A33F9D00884369 /* ListView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F53B0C9A27A33F9D00884369 /* ListView.storyboard */; };
 		F53B0C9D27A33FBB00884369 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53B0C9C27A33FBB00884369 /* ListView.swift */; };
 		F53B0C9F27A3400900884369 /* InitialControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53B0C9E27A3400900884369 /* InitialControllerBuilder.swift */; };
-		F53B0CA227A3417100884369 /* ListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53B0CA127A3417100884369 /* ListBuilder.swift */; };
 		F59EDCA827A40D5F007A0CF2 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCA727A40D5F007A0CF2 /* ListPresenter.swift */; };
 		F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */; };
 		F59EDCAD27A43EA0007A0CF2 /* Gasolinera.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */; };
@@ -25,6 +24,8 @@
 		F5ABCB0927A4967600D98492 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABCB0827A4967600D98492 /* DetailView.swift */; };
 		F5C1D6AF27A549C800C8DBB0 /* DetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6AE27A549C800C8DBB0 /* DetailBuilder.swift */; };
 		F5C1D6B227A5634600C8DBB0 /* ListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6B127A5634600C8DBB0 /* ListWireframe.swift */; };
+		F5C1D6B527A58AB500C8DBB0 /* GasProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6B427A58AB500C8DBB0 /* GasProvider.swift */; };
+		F5C1D6B727A5A15500C8DBB0 /* ListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6B627A5A15500C8DBB0 /* ListBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +42,6 @@
 		F53B0C9A27A33F9D00884369 /* ListView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListView.storyboard; sourceTree = "<group>"; };
 		F53B0C9C27A33FBB00884369 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		F53B0C9E27A3400900884369 /* InitialControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialControllerBuilder.swift; sourceTree = "<group>"; };
-		F53B0CA127A3417100884369 /* ListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBuilder.swift; sourceTree = "<group>"; };
 		F59EDCA727A40D5F007A0CF2 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gasolinera.swift; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		F5ABCB0827A4967600D98492 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F5C1D6AE27A549C800C8DBB0 /* DetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBuilder.swift; sourceTree = "<group>"; };
 		F5C1D6B127A5634600C8DBB0 /* ListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWireframe.swift; sourceTree = "<group>"; };
+		F5C1D6B427A58AB500C8DBB0 /* GasProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasProvider.swift; sourceTree = "<group>"; };
+		F5C1D6B627A5A15500C8DBB0 /* ListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		F53B0C8327A33EE000884369 /* OscarProyectoGasolineras */ = {
 			isa = PBXGroup;
 			children = (
+				F5C1D6B327A58A9E00C8DBB0 /* Providers */,
 				F53B0C9827A33F2D00884369 /* Modules */,
 				F53B0C8427A33EE000884369 /* AppDelegate.swift */,
 				F53B0C8627A33EE000884369 /* SceneDelegate.swift */,
@@ -120,6 +123,7 @@
 				F59EDCAB27A43E6C007A0CF2 /* Models */,
 				F53B0C9927A33F5900884369 /* List */,
 				F53B0C9E27A3400900884369 /* InitialControllerBuilder.swift */,
+				F5C1D6B627A5A15500C8DBB0 /* ListBuilder.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -131,7 +135,6 @@
 				F59EDCAE27A45170007A0CF2 /* Interactor */,
 				F59EDCA627A40D4B007A0CF2 /* Presenter */,
 				F53B0CA027A3415600884369 /* UI */,
-				F53B0CA127A3417100884369 /* ListBuilder.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -186,6 +189,14 @@
 				F5C1D6B127A5634600C8DBB0 /* ListWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		F5C1D6B327A58A9E00C8DBB0 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				F5C1D6B427A58AB500C8DBB0 /* GasProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,11 +318,12 @@
 				F59EDCB027A45185007A0CF2 /* ListInteractor.swift in Sources */,
 				F59EDCA827A40D5F007A0CF2 /* ListPresenter.swift in Sources */,
 				F53B0C9D27A33FBB00884369 /* ListView.swift in Sources */,
-				F53B0CA227A3417100884369 /* ListBuilder.swift in Sources */,
 				F53B0C8927A33EE000884369 /* ViewController.swift in Sources */,
 				F5C1D6B227A5634600C8DBB0 /* ListWireframe.swift in Sources */,
 				F5ABCB0927A4967600D98492 /* DetailView.swift in Sources */,
+				F5C1D6B727A5A15500C8DBB0 /* ListBuilder.swift in Sources */,
 				F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */,
+				F5C1D6B527A58AB500C8DBB0 /* GasProvider.swift in Sources */,
 				F53B0C8527A33EE000884369 /* AppDelegate.swift in Sources */,
 				F5C1D6AF27A549C800C8DBB0 /* DetailBuilder.swift in Sources */,
 				F59EDCAD27A43EA0007A0CF2 /* Gasolinera.swift in Sources */,

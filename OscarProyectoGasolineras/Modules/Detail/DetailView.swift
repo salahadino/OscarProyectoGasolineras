@@ -32,13 +32,16 @@ class DetailView: UIViewController {
     }
     
     var viewModel: DetailViewModel?
+    var gasID: String?
     
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configure(with: viewModel)
+        //configure(with: viewModel)
+        
+        rotulo.text = gasID
 
         // Do any additional setup after loading the view.
     }

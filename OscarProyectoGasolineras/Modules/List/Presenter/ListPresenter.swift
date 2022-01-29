@@ -52,14 +52,11 @@ class ListPresenter: ListPresenterContract {
     
     func viewDidLoad() {
         interactor?.output = self
-        fetchData()
+        interactor?.fetchItems()
+        
     }
 
-    
-    private func fetchData() {
-        interactor?.fetchItems()
-    }
-    
+  
     
 }
 

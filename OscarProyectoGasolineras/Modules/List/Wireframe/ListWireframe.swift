@@ -20,9 +20,12 @@ class ListWireframe: ListWireframeContract {
     func navigate(to gas: ListaEESSPrecio) {
         
         DispatchQueue.main.async {
-            let viewController = DetailBuilder().build(viewModel: DetailViewModel(rotulo: gas.rotulo, precio: gas.precioGLP, localidad: gas.localidad, direccion: gas.dirección, horario: gas.horario, logo: gas.imagen))
+//            let viewController = DetailBuilder().build(viewModel: DetailViewModel(rotulo: gas.rotulo, precio: gas.precioGLP, localidad: gas.localidad, direccion: gas.dirección, horario: gas.horario, logo: gas.imagen))
             
+            let viewController = DetailBuilder().build(gasId: gas.ideess ?? "")
             self.view?.navigationController?.pushViewController(viewController, animated: true)
+            
+//            self.view?.navigationController?.pushViewController(viewController, animated: true)
           
         }
     }

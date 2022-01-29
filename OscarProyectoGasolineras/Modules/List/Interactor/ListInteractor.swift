@@ -15,34 +15,24 @@ protocol ListInteractorContract {
 }
 
 protocol ListInteractorOutputContract {
-    
     func didFetch(gas: [ListaEESSPrecio])
     func fetchDidFail()
 }
 
+
 class ListInteractor: ListInteractorContract {
     var output: ListInteractorOutputContract?
+    var gasProvider: GasProviderContract?
     
     func fetchItems() {
         
-        guard let url = URL(string: "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/") else {
-            output?.fetchDidFail()
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        
-        AF.request(request).responseDecodable { (response: DataResponse<Gasolinera, AFError>) in
-            switch response.result {
-            case .success(let gas): self.output?.didFetch(gas: gas.listaEESSPrecio)
+        gasProvider?.getGasolinerasList({ result in
+            switch result {
+            case .success(let gasolineras): self.output?.didFetch(gas: gasolineras)
             case .failure: self.output?.fetchDidFail()
             }
-        }.validate()
-        
-        
+        })
         
     }
-    
-    
     
 }

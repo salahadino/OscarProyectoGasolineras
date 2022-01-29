@@ -10,11 +10,17 @@ import UIKit
 
 class DetailBuilder {
     
-    func build(viewModel: DetailViewModel) -> UIViewController {
-        
-        let viewConroller = DetailView.createFromStoryboard()
-        viewConroller.viewModel = viewModel
-        return viewConroller
-         
+//    func build(viewModel: DetailViewModel) -> UIViewController {
+//
+//        let viewConroller = DetailView.createFromStoryboard()
+//        viewConroller.viewModel = viewModel
+//        return viewConroller
+//
+//    }
+    
+    func build(gasId: String) -> UIViewController {
+        let viewController = DetailView.createFromStoryboard()
+        viewController.gasID = gasId
+        return viewController
     }
 }

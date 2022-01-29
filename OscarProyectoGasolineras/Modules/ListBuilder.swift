@@ -23,6 +23,8 @@ class ListBuilder {
         presenter.wireframe = wireframe
         wireframe.view = viewController
         
+        interactor.gasProvider = NetworkGasListProvider()
+        
         return viewController
         
         
