@@ -21,9 +21,6 @@ protocol DetailPresenterContract: AnyObject {
     func viewDidLoad()
     
     
-    
-    
-    
 }
 
 class DetailPresenter: DetailPresenterContract {
@@ -47,7 +44,7 @@ class DetailPresenter: DetailPresenterContract {
     
     func viewModel() -> DetailViewModel {
         
-        return DetailViewModel(rotulo: gasolineraABuscar?.rotulo, precio: gasolineraABuscar?.precioGLP, localidad: gasolineraABuscar?.localidad, direccion: gasolineraABuscar?.dirección, horario: gasolineraABuscar?.horario, logo: nil)
+        return DetailViewModel(rotulo: gasolineraABuscar?.rotulo, precio: gasolineraABuscar?.precioGLP, localidad: gasolineraABuscar?.localidad, direccion: gasolineraABuscar?.dirección, horario: gasolineraABuscar?.horario, logo: gasolineraABuscar?.imagen)
     }
     
     func viewDidLoad() {
@@ -68,7 +65,6 @@ extension DetailPresenter: DetailInteractorOutputContract {
     func fetchDidFail() {
         print("Error")
     }
-    
     
     
 }

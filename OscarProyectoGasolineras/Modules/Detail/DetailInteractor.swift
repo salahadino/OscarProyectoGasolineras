@@ -27,7 +27,6 @@ class DetailInteractor: DetailInteractorContract {
     
     
     
-    
     func fetchGasolineras() {
         gasProvider?.getGasolinerasList({ result in
             switch result {

@@ -25,7 +25,7 @@ class ListPresenter: ListPresenterContract {
     var interactor: ListInteractorContract?
     var wireframe: ListWireframeContract?
     
-    private var gas = [ListaEESSPrecio]() {
+    private var gasolineras = [ListaEESSPrecio]() {
         
         didSet {
             view?.reloadData()
@@ -33,19 +33,19 @@ class ListPresenter: ListPresenterContract {
     }
     
     var numItems: Int {
-        return gas.count
+        return gasolineras.count
         
     }
     
     
     func cellViewModel(at indexPath: IndexPath) -> ListCellViewModel {
-        let item = gas[indexPath.row]
-        return ListCellViewModel(logo: item.imagen, rotulo: item.rotulo ?? "", localidad: item.localidad, precio: item.precioGLP)
+        let gasolinera = gasolineras[indexPath.row]
+        return ListCellViewModel(logo: gasolinera.imagen, rotulo: gasolinera.rotulo ?? "", localidad: gasolinera.localidad, precio: gasolinera.precioGLP)
        
     }
     
     func didSelectItem(at indexPath: IndexPath) {
-        let gasolinera = gas[indexPath.row]
+        let gasolinera = gasolineras[indexPath.row]
         wireframe?.navigate(to: gasolinera)
         
     }
@@ -56,8 +56,6 @@ class ListPresenter: ListPresenterContract {
         
     }
 
-  
-    
 }
 
 extension ListPresenter: ListInteractorOutputContract {
@@ -65,10 +63,10 @@ extension ListPresenter: ListInteractorOutputContract {
         print("Error")
     }
     
-    func didFetch(gas: [ListaEESSPrecio]) {
+    func didFetch(gasolineras: [ListaEESSPrecio]) {
         
-        self.gas = gas
-        self.gas.removeAll() {$0.precioGLP == ""}
+        self.gasolineras = gasolineras
+        self.gasolineras.removeAll() {$0.precioGLP == ""}
         
     }
     

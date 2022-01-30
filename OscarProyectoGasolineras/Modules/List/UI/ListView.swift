@@ -52,6 +52,7 @@ extension ListView: UITableViewDataSource {
         }
         
         cell.configure(viewModel: viewModel)
+        cell.selectionStyle = .none
         
         return cell
    

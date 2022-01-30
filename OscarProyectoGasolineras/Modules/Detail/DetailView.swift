@@ -43,36 +43,24 @@ class DetailView: UIViewController, DetailViewContract {
         return UIStoryboard(name: "DetailView", bundle: .main).instantiateViewController(withIdentifier: "DetailView") as! DetailView
     }
     
-    var viewModel: DetailViewModel? 
+     
     var gasID: String?
     
-    
-    
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         presenter?.idGas = gasID
         presenter?.viewDidLoad()
-//        viewModel = presenter?.viewModel()
-        
-        
-       // configure(with: viewModel)
-        
-        
-        
 
-        // Do any additional setup after loading the view.
     }
     
     func reloadData() {
         
-        precio.text = presenter?.gasolineraABuscar?.precioGLP
         
-        print(presenter?.gasolineraABuscar)
-        //configure(with: viewModel)
+        configure(with: presenter?.viewModel())
+        
+
     }
     
     func configure(with viewModel: DetailViewModel?) {

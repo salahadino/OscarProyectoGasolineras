@@ -15,7 +15,7 @@ protocol ListInteractorContract {
 }
 
 protocol ListInteractorOutputContract {
-    func didFetch(gas: [ListaEESSPrecio])
+    func didFetch(gasolineras: [ListaEESSPrecio])
     func fetchDidFail()
 }
 
@@ -24,11 +24,12 @@ class ListInteractor: ListInteractorContract {
     var output: ListInteractorOutputContract?
     var gasProvider: GasProviderContract?
     
+    
     func fetchItems() {
         
         gasProvider?.getGasolinerasList({ result in
             switch result {
-            case .success(let gasolineras): self.output?.didFetch(gas: gasolineras)
+            case .success(let gasolineras): self.output?.didFetch(gasolineras: gasolineras)
             case .failure: self.output?.fetchDidFail()
             }
         })
