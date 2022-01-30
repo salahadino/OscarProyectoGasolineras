@@ -44,7 +44,7 @@ class DetailPresenter: DetailPresenterContract {
     
     func viewModel() -> DetailViewModel {
         
-        return DetailViewModel(rotulo: gasolineraABuscar?.rotulo, precio: gasolineraABuscar?.precioGLP, localidad: gasolineraABuscar?.localidad, direccion: gasolineraABuscar?.dirección, horario: gasolineraABuscar?.horario, logo: gasolineraABuscar?.imagen)
+        return DetailViewModel(rotulo: gasolineraABuscar?.rotulo, precio: gasolineraABuscar?.precioGLP, localidad: gasolineraABuscar?.localidad, direccion: gasolineraABuscar?.direccion, horario: gasolineraABuscar?.horario, logo: gasolineraABuscar?.imagen)
     }
     
     func viewDidLoad() {

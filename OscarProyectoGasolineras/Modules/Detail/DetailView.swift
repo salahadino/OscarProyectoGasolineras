@@ -26,8 +26,6 @@ struct DetailViewModel {
 
 class DetailView: UIViewController, DetailViewContract {
    
-    
-    
     var presenter: DetailPresenterContract?
     
     
@@ -56,10 +54,8 @@ class DetailView: UIViewController, DetailViewContract {
     }
     
     func reloadData() {
-        
-        
+  
         configure(with: presenter?.viewModel())
-        
 
     }
     
