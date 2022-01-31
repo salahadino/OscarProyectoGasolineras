@@ -33,26 +33,32 @@ class UserPresenter: UserPresenterContract {
     
     func didUpdateName(_ name: String?) {
         userModel.name = name
+        view?.didValidateName(userModel.isValidName)
     }
     
     func didUpdateAddress(_ address: String?) {
         userModel.address = address
+        view?.didValidateAddress(userModel.isValidAdress)
     }
     
     func didUpdatePhone(_ phone: String?) {
         userModel.phone = phone
+        view?.didValidatePhone(userModel.isValidPhone)
     }
     
     func didUpdateMail(_ mail: String?) {
         userModel.mail = mail
+        view?.didValidateMail(userModel.isValidMail)
     }
     
     func didUpdateModel(_ model: String?) {
         userModel.model = model
+        view?.didValidateModel(userModel.isValidModel)
     }
     
     func didUpdateFuel(_ fuel: String?) {
         userModel.fuel = fuel
+        view?.didValidateFuel(userModel.isValidFuel)
     }
     
     
