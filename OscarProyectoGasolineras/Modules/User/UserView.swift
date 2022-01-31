@@ -18,12 +18,13 @@ protocol UserViewContract: UIViewController {
     func didValidateModel(_ valid: Bool)
     func didValidateFuel(_ valid: Bool)
     
+    func showSendError()
+    
     
 }
 
 class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
-  
-    
+ 
     
     @IBOutlet weak var inputFuelType: UITextField!
     @IBOutlet weak var inputModel: UITextField!
@@ -37,6 +38,10 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
     }
     var presenter: UserPresenterContract?
     
+    @IBAction func sendAction(_ sender: Any) {
+        presenter?.didSend()
+        
+    }
     static func createFromStoryboard() -> UserView {
         
         return UIStoryboard(name: "UserView", bundle: .main).instantiateViewController(withIdentifier: "UserView") as! UserView
@@ -122,6 +127,14 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
             }
         }
         
+    }
+    
+    func showSendError() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Se ha producido un error", message: "Debe completar todos los campos", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            self.present(alert, animated: true)
+        }
     }
     
   

@@ -17,6 +17,7 @@ class UserBuilder {
         let presenter = UserPresenter()
         
         presenter.view = viewController
+        presenter.userProvider = UserProvider()
         viewController.presenter = presenter
         
         return viewController

@@ -17,13 +17,36 @@ protocol UserPresenterContract {
     func didUpdateMail(_ mail: String?)
     func didUpdateModel(_ model: String?)
     func didUpdateFuel(_ fuel: String?)
+    
+    func didSend()
 }
 
 
 class UserPresenter: UserPresenterContract {
+    //A interactor
+    private let fileManager: FileManager
+    private let fileName: String
+    
+    init(fileManager: FileManager = FileManager.default, fileName: String = "userData") {
+        
+        self.fileName = fileName
+        self.fileManager = fileManager
+    }
+    
+    private var fileUrl: URL? {
+        
+        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(fileName).plist")
+        return url
+    }
+    
+    var userProvider: UserProviderContract?
+   
+    //------------------------------
+    
+    
     var view: UserViewContract?
     
-    private var userModel = UserModel(name: nil, address: nil, mail: nil, phone: nil, model: nil, fuel: nil) {
+    private var userModel = UserModel() {
         
         didSet {
             
@@ -61,6 +84,57 @@ class UserPresenter: UserPresenterContract {
         view?.didValidateFuel(userModel.isValidFuel)
     }
     
+    func didSend() {
+        guard userModel.isValid else {
+            view?.showSendError()
+            return
+        }
+        
+        userProvider?.saveUserToDisk(with: userModel, { result in
+            if result {
+                print("Datos guardados")
+            }
+        })
+        
+    }
     
     
+}
+
+//A interactor
+private extension UserPresenter {
+    func saveUser(_ user: UserModel) {
+        
+        guard let url = fileUrl else {return}
+        
+        let encoder = PropertyListEncoder()
+        encoder.outputFormat = .xml
+        
+        do {
+            let data = try encoder.encode(user)
+            try data.write(to: url)
+        } catch {
+            
+            
+        }
+        
+    }
+    
+    func loadUser(_ completion: @escaping (UserModel?) -> ()) {
+        DispatchQueue.global().async {
+            guard let url = self.fileUrl else {
+                completion(nil)
+                return
+            }
+            
+            guard let data = try? Data(contentsOf: url) else {
+                completion(nil)
+                return
+            }
+            
+            let user = try? PropertyListDecoder().decode(UserModel.self, from: data)
+            completion(user)
+        }
+      
+    }
 }

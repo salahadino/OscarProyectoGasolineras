@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel {
+struct UserModel: Codable {
     
     var name: String?
     var address: String?
@@ -40,6 +40,10 @@ struct UserModel {
         guard let fuel = fuel else {return false}
         return !fuel.isEmpty
         
+    }
+    
+    var isValid: Bool {
+        return isValidName && isValidAdress && isValidMail && isValidPhone && isValidModel && isValidFuel
     }
     
     

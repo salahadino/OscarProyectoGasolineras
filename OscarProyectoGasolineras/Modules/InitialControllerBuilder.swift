@@ -14,17 +14,18 @@ class InitialControllerBuilder {
         
         let listViewController = ListBuilder().build()
         let userViewController = UserBuilder().build()
-        userViewController.tabBarItem = UITabBarItem.init(title: "Usuario", image: nil, tag: 1)
+        
         
         let navigationController = UINavigationController(rootViewController: listViewController)
+        let userNavigationController = UINavigationController(rootViewController: userViewController)
         
-        navigationController.tabBarItem = UITabBarItem(title: "Gasolineras", image: UIImage.init(systemName: "list.bullet"), tag: 0)
-        
+        navigationController.tabBarItem = UITabBarItem(title: "Gasolineras", image: UIImage.init(systemName: "list.bullet"), tag: 1)
+        userNavigationController.tabBarItem = UITabBarItem(title: "Usuario", image: UIImage.init(systemName: "person"), tag: 0)
         
         
         let tabBarcontroller = UITabBarController()
         
-        tabBarcontroller.setViewControllers([navigationController, userViewController], animated: false)
+        tabBarcontroller.setViewControllers([userNavigationController, navigationController], animated: false)
         
         
         return tabBarcontroller
