@@ -26,6 +26,7 @@
 		F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */; };
 		F59EDCAD27A43EA0007A0CF2 /* Gasolinera.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */; };
 		F59EDCB027A45185007A0CF2 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59EDCAF27A45185007A0CF2 /* ListInteractor.swift */; };
+		F5A8695527A93AE000AC7889 /* UserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A8695427A93AE000AC7889 /* UserInteractor.swift */; };
 		F5ABCB0727A4964B00D98492 /* DetailView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5ABCB0627A4964B00D98492 /* DetailView.storyboard */; };
 		F5ABCB0927A4967600D98492 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5ABCB0827A4967600D98492 /* DetailView.swift */; };
 		F5C1D6AF27A549C800C8DBB0 /* DetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C1D6AE27A549C800C8DBB0 /* DetailBuilder.swift */; };
@@ -60,6 +61,7 @@
 		F59EDCA927A4155C007A0CF2 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		F59EDCAC27A43EA0007A0CF2 /* Gasolinera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gasolinera.swift; sourceTree = "<group>"; };
 		F59EDCAF27A45185007A0CF2 /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		F5A8695427A93AE000AC7889 /* UserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInteractor.swift; sourceTree = "<group>"; };
 		F5ABCB0627A4964B00D98492 /* DetailView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailView.storyboard; sourceTree = "<group>"; };
 		F5ABCB0827A4967600D98492 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		F5C1D6AE27A549C800C8DBB0 /* DetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBuilder.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				F572B60727A70B3400F3B404 /* UserView.swift */,
 				F572B60927A72D8B00F3B404 /* UserBuilder.swift */,
 				F5530E7027A7F07A00C8F369 /* UserPresenter.swift */,
+				F5A8695427A93AE000AC7889 /* UserInteractor.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				F5530E7127A7F07A00C8F369 /* UserPresenter.swift in Sources */,
 				F59EDCAA27A4155C007A0CF2 /* ListViewCell.swift in Sources */,
 				F5C1D6B927A5B43C00C8DBB0 /* DetailPresenter.swift in Sources */,
+				F5A8695527A93AE000AC7889 /* UserInteractor.swift in Sources */,
 				F5C1D6B527A58AB500C8DBB0 /* GasProvider.swift in Sources */,
 				F53B0C8527A33EE000884369 /* AppDelegate.swift in Sources */,
 				F5C1D6AF27A549C800C8DBB0 /* DetailBuilder.swift in Sources */,

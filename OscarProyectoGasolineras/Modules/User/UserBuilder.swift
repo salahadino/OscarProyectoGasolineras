@@ -15,9 +15,11 @@ class UserBuilder {
         let viewController = UserView.createFromStoryboard()
         
         let presenter = UserPresenter()
+        let interactor = UserInteractor()
         
         presenter.view = viewController
-        presenter.userProvider = UserProvider()
+        presenter.interactor = interactor
+        interactor.userProvider = UserProvider()
         viewController.presenter = presenter
         
         return viewController

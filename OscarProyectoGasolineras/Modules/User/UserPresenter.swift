@@ -10,6 +10,7 @@ import Foundation
 protocol UserPresenterContract {
     
     var view: UserViewContract? {get set}
+    var interactor: UserInteractorContract? {get set}
     
     func didUpdateName(_ name: String?)
     func didUpdateAddress(_ address: String?)
@@ -39,11 +40,11 @@ class UserPresenter: UserPresenterContract {
         return url
     }
     
-    var userProvider: UserProviderContract?
+    
    
     //------------------------------
     
-    
+    var interactor: UserInteractorContract?
     var view: UserViewContract?
     
     private var userModel = UserModel() {
@@ -90,12 +91,8 @@ class UserPresenter: UserPresenterContract {
             return
         }
         
-        userProvider?.saveUserToDisk(with: userModel, { result in
-            if result {
-                print("Datos guardados")
-            }
-        })
-        
+        interactor?.saveData(with: userModel)
+    
     }
     
     
