@@ -21,11 +21,8 @@ protocol DetailInteractorOutputContract {
 }
 
 class DetailInteractor: DetailInteractorContract {
-  
     var output: DetailInteractorOutputContract?
     var gasProvider: GasProviderContract?
-    
-    
     
     func fetchGasolineras() {
         gasProvider?.getGasolinerasList({ result in

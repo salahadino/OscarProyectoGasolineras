@@ -11,23 +11,17 @@ protocol DetailPresenterContract: AnyObject {
     
     var view: DetailViewContract? {get set}
     var interactor: DetailInteractorContract? {get set}
-    
     var idGas: String? {get set}
-    
     var gasolineraABuscar: ListaEESSPrecio? {get set}
     
     func viewModel() -> DetailViewModel
-    
     func viewDidLoad()
-    
     
 }
 
 class DetailPresenter: DetailPresenterContract {
     var interactor: DetailInteractorContract?
-    
-    var view: DetailViewContract?
-    
+    weak var view: DetailViewContract?
     var gasolineraABuscar: ListaEESSPrecio? {
         
         didSet {
@@ -65,6 +59,5 @@ extension DetailPresenter: DetailInteractorOutputContract {
     func fetchDidFail() {
         print("Error")
     }
-    
     
 }

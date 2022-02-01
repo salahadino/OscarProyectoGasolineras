@@ -28,7 +28,7 @@ protocol UserPresenterContract: AnyObject {
 class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
   
     var interactor: UserInteractorContract?
-    var view: UserViewContract?
+    weak var view: UserViewContract?
     
     private var userModel = UserModel() 
     
@@ -72,9 +72,7 @@ class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
             view?.showSendError()
             return
         }
-        
         interactor?.saveData(with: userModel)
-    
     }
     
     func didSave() {
@@ -82,12 +80,8 @@ class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
     }
     
     func didLoad(viewModel: UserModel) {
-        print("ViewModel a mostrar: ",viewModel)
         view?.configure(with: UserViewModel(name: viewModel.name, address: viewModel.address, mail: viewModel.mail, phone: viewModel.phone, model: viewModel.model, fuel: viewModel.fuel))
     }
-    
-    
-    
     
 }
 

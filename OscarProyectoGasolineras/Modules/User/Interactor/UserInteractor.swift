@@ -36,7 +36,6 @@ class UserInteractor: UserInteractorContract {
         })
     }
     
-    
     var userProvider: UserProviderContract?
     var output: UserInteractorOutputContract?
     
@@ -49,7 +48,6 @@ class UserInteractor: UserInteractorContract {
         })
             
     }
-    
     
     
 }

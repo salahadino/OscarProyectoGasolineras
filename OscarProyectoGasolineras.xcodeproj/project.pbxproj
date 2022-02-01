@@ -171,11 +171,10 @@
 		F572B60427A70AFC00F3B404 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				F572B60527A70B1600F3B404 /* UserView.storyboard */,
-				F572B60727A70B3400F3B404 /* UserView.swift */,
+				F5A8695B27A9807900AC7889 /* Interactor */,
+				F5A8695A27A9805800AC7889 /* Presenter */,
+				F5A8695927A9804B00AC7889 /* UI */,
 				F572B60927A72D8B00F3B404 /* UserBuilder.swift */,
-				F5530E7027A7F07A00C8F369 /* UserPresenter.swift */,
-				F5A8695427A93AE000AC7889 /* UserInteractor.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -205,14 +204,63 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		F5ABCB0327A4954A00D98492 /* Detail */ = {
+		F5A8695627A97FF700AC7889 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				F5ABCB0627A4964B00D98492 /* DetailView.storyboard */,
 				F5ABCB0827A4967600D98492 /* DetailView.swift */,
-				F5C1D6AE27A549C800C8DBB0 /* DetailBuilder.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F5A8695727A9801400AC7889 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
 				F5C1D6B827A5B43C00C8DBB0 /* DetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F5A8695827A9802200AC7889 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
 				F5C1D6BA27A5EC7900C8DBB0 /* DetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F5A8695927A9804B00AC7889 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F572B60527A70B1600F3B404 /* UserView.storyboard */,
+				F572B60727A70B3400F3B404 /* UserView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F5A8695A27A9805800AC7889 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F5530E7027A7F07A00C8F369 /* UserPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F5A8695B27A9807900AC7889 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F5A8695427A93AE000AC7889 /* UserInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F5ABCB0327A4954A00D98492 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F5A8695827A9802200AC7889 /* Interactor */,
+				F5A8695727A9801400AC7889 /* Presenter */,
+				F5A8695627A97FF700AC7889 /* UI */,
+				F5C1D6AE27A549C800C8DBB0 /* DetailBuilder.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";

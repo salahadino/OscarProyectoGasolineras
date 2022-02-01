@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ListViewContract {
+protocol ListViewContract: AnyObject {
     
     var presenter: ListPresenterContract? {set get}
     func reloadData()

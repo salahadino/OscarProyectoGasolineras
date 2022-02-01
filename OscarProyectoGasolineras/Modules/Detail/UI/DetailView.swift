@@ -7,15 +7,9 @@
 
 import UIKit
 
-protocol DetailViewContract {
-    
-    var presenter: DetailPresenterContract? {get set}
-    func reloadData()
-    
-}
+
 
 struct DetailViewModel {
-    
     let rotulo: String?
     let precio: String?
     let localidad: String?
@@ -24,10 +18,15 @@ struct DetailViewModel {
     let logo: UIImage?
 }
 
+protocol DetailViewContract: AnyObject {
+    var presenter: DetailPresenterContract? {get set}
+    func reloadData()
+    
+}
+
 class DetailView: UIViewController, DetailViewContract {
    
     var presenter: DetailPresenterContract?
-    
     
     @IBOutlet weak var precio: UILabel!
     @IBOutlet weak var localidad: UILabel!
@@ -41,10 +40,8 @@ class DetailView: UIViewController, DetailViewContract {
         return UIStoryboard(name: "DetailView", bundle: .main).instantiateViewController(withIdentifier: "DetailView") as! DetailView
     }
     
-     
     var gasID: String?
     
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +70,5 @@ class DetailView: UIViewController, DetailViewContract {
 
     }
     
-
 
 }

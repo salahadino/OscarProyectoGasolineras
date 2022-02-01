@@ -21,7 +21,7 @@ protocol ListPresenterContract: AnyObject {
 
 class ListPresenter: ListPresenterContract {
    
-    var view: ListViewContract?
+    weak var view: ListViewContract?
     var interactor: ListInteractorContract?
     var wireframe: ListWireframeContract?
     

@@ -72,12 +72,16 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
     }
     
     func configure(with viewModel: UserViewModel) {
-        self.inputName.text = viewModel.name
-        self.inputAddress.text = viewModel.address
-        self.inputMail.text = viewModel.mail
-        self.inputPhone.text = viewModel.phone
-        self.inputModel.text = viewModel.model
-        self.inputFuelType.text = viewModel.fuel
+        
+        DispatchQueue.main.async {
+            self.inputName.text = viewModel.name
+            self.inputAddress.text = viewModel.address
+            self.inputMail.text = viewModel.mail
+            self.inputPhone.text = viewModel.phone
+            self.inputModel.text = viewModel.model
+            self.inputFuelType.text = viewModel.fuel
+        }
+       
     }
     
     func didValidateName(_ valid: Bool) {
@@ -167,9 +171,7 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
             self.present(alert, animated: true)
         }
     }
-    
   
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case inputName: presenter?.didUpdateName(textField.text)

@@ -11,9 +11,7 @@ import UIKit
 class UserBuilder {
     
     func build() -> UIViewController {
-        
         let viewController = UserView.createFromStoryboard()
-        
         let presenter = UserPresenter()
         let interactor = UserInteractor()
         
