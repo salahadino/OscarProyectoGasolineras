@@ -10,8 +10,7 @@ import Foundation
 protocol UserProviderContract {
     
     func saveUserToDisk(with viewModel: UserModel,_ completion: @escaping(Bool) ->())
-    
-    
+ 
 }
 
 class UserProvider: UserProviderContract {
@@ -19,9 +18,7 @@ class UserProvider: UserProviderContract {
         
         let fileManager = FileManager.default
         let fileName = "userData"
-        
-       
-        
+   
         var fileUrl: URL? {
             
             let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(fileName).plist")
@@ -46,7 +43,5 @@ class UserProvider: UserProviderContract {
             
         }
     }
-    
-    
     
 }
