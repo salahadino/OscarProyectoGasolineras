@@ -7,9 +7,20 @@
 
 import UIKit
 
+struct UserViewModel {
+    let name: String?
+    let address: String?
+    let mail: String?
+    let phone: String?
+    let model: String?
+    let fuel: String?
+}
+
 protocol UserViewContract: UIViewController {
     
     var presenter: UserPresenterContract? {get set}
+    
+    func configure(with viewModel: UserViewModel)
     
     func didValidateName(_ valid: Bool)
     func didValidateAddress(_ valid: Bool)
@@ -19,6 +30,7 @@ protocol UserViewContract: UIViewController {
     func didValidateFuel(_ valid: Bool)
     
     func showSendError()
+    func showSaveSuccess()
     
     
 }
@@ -53,8 +65,19 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
         [inputMail, inputName, inputModel, inputPhone, inputAddress, inputFuelType].forEach { inputText in
             inputText?.delegate = self
         }
+        
+        presenter?.viewDidLoad()
 
         
+    }
+    
+    func configure(with viewModel: UserViewModel) {
+        self.inputName.text = viewModel.name
+        self.inputAddress.text = viewModel.address
+        self.inputMail.text = viewModel.mail
+        self.inputPhone.text = viewModel.phone
+        self.inputModel.text = viewModel.model
+        self.inputFuelType.text = viewModel.fuel
     }
     
     func didValidateName(_ valid: Bool) {
@@ -132,6 +155,14 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
     func showSendError() {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Se ha producido un error", message: "Debe completar todos los campos", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func showSaveSuccess() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Operación realizada con éxito", message: "Los datos se han guardado correctamente", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
             self.present(alert, animated: true)
         }

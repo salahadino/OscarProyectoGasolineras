@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol UserPresenterContract {
+protocol UserPresenterContract: AnyObject {
     
     var view: UserViewContract? {get set}
     var interactor: UserInteractorContract? {get set}
@@ -20,40 +20,17 @@ protocol UserPresenterContract {
     func didUpdateFuel(_ fuel: String?)
     
     func didSend()
+    
+    func viewDidLoad()
 }
 
 
-class UserPresenter: UserPresenterContract {
-    //A interactor
-    private let fileManager: FileManager
-    private let fileName: String
-    
-    init(fileManager: FileManager = FileManager.default, fileName: String = "userData") {
-        
-        self.fileName = fileName
-        self.fileManager = fileManager
-    }
-    
-    private var fileUrl: URL? {
-        
-        let url = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("\(fileName).plist")
-        return url
-    }
-    
-    
-   
-    //------------------------------
-    
+class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
+  
     var interactor: UserInteractorContract?
     var view: UserViewContract?
     
-    private var userModel = UserModel() {
-        
-        didSet {
-            
-            print(userModel)
-        }
-    }
+    private var userModel = UserModel() 
     
     func didUpdateName(_ name: String?) {
         userModel.name = name
@@ -85,6 +62,11 @@ class UserPresenter: UserPresenterContract {
         view?.didValidateFuel(userModel.isValidFuel)
     }
     
+    func viewDidLoad() {
+        interactor?.output = self
+        interactor?.loadData()
+    }
+    
     func didSend() {
         guard userModel.isValid else {
             view?.showSendError()
@@ -95,43 +77,18 @@ class UserPresenter: UserPresenterContract {
     
     }
     
+    func didSave() {
+        view?.showSaveSuccess()
+    }
+    
+    func didLoad(viewModel: UserModel) {
+        print("ViewModel a mostrar: ",viewModel)
+        view?.configure(with: UserViewModel(name: viewModel.name, address: viewModel.address, mail: viewModel.mail, phone: viewModel.phone, model: viewModel.model, fuel: viewModel.fuel))
+    }
+    
+    
+    
     
 }
 
-//A interactor
-private extension UserPresenter {
-    func saveUser(_ user: UserModel) {
-        
-        guard let url = fileUrl else {return}
-        
-        let encoder = PropertyListEncoder()
-        encoder.outputFormat = .xml
-        
-        do {
-            let data = try encoder.encode(user)
-            try data.write(to: url)
-        } catch {
-            
-            
-        }
-        
-    }
-    
-    func loadUser(_ completion: @escaping (UserModel?) -> ()) {
-        DispatchQueue.global().async {
-            guard let url = self.fileUrl else {
-                completion(nil)
-                return
-            }
-            
-            guard let data = try? Data(contentsOf: url) else {
-                completion(nil)
-                return
-            }
-            
-            let user = try? PropertyListDecoder().decode(UserModel.self, from: data)
-            completion(user)
-        }
-      
-    }
-}
+
