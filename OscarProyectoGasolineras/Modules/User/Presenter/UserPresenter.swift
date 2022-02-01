@@ -79,6 +79,10 @@ class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
         view?.showSaveSuccess()
     }
     
+    func didNotsave() {
+        print("Error al guardar los datos")
+    }
+    
     func didLoad(viewModel: UserModel) {
         view?.configure(with: UserViewModel(name: viewModel.name, address: viewModel.address, mail: viewModel.mail, phone: viewModel.phone, model: viewModel.model, fuel: viewModel.fuel))
     }

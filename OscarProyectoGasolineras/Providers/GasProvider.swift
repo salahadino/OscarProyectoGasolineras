@@ -40,8 +40,6 @@ class NetworkGasListProvider: GasProviderContract {
             }
         }.validate()
         
-        
-        
     }
     
     

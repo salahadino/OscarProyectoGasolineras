@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  OscarProyectoGasolineras
+
+  Created by Oscar Cazallas Esteban on 1/2/22.
+  
+*/
+"user_form_user_title" = "User data";
+"user_form_full_name_label" = "Full name";
+"user_form_address_label" = "Address";
+"user_form_mail_label" = "Mail";
+"user_form_phone_label" = "Phone";
+"user_form_car_data" = "Car data";
+"user_form_car_model" = "Car model";
+"user_form_car_fuel_type" = "Fuel type";
+"user_form_send_button" = "Send";
+"user_form_alert_accept" = "OK";
+"user_form_alert_error" = "Error";
+"user_form_alert_complete" = "You must complete all fields";
+"user_form_alert_success" = "Success";
+"user_form_alert_saved" = "Data saved successfully";
+"tab_user" = "User";
+"tab_list" = "Stations list";

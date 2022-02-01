@@ -31,12 +31,59 @@ protocol UserViewContract: UIViewController {
     
     func showSendError()
     func showSaveSuccess()
-    
-    
+  
 }
 
 class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
  
+    @IBOutlet weak var sendButton: UIButton! {
+        didSet {
+            sendButton.setTitle(NSLocalizedString("user_form_send_button", comment: ""), for: .normal)
+        }
+    }
+    
+    @IBOutlet weak var fuelLabel: UILabel! {
+        didSet {
+            fuelLabel.text = NSLocalizedString("user_form_car_fuel_type", comment: "")
+        }
+    }
+    @IBOutlet weak var modelLabel: UILabel! {
+        didSet {
+            modelLabel.text = NSLocalizedString("user_form_car_model", comment: "")
+        }
+    }
+    @IBOutlet weak var carTitleLabel: UILabel! {
+        didSet {
+            carTitleLabel.text = NSLocalizedString("user_form_car_data", comment: "")
+        }
+    }
+    
+    @IBOutlet weak var phoneLabel: UILabel! {
+        didSet {
+            phoneLabel.text = NSLocalizedString("user_form_phone_label", comment: "")
+        }
+    }
+    @IBOutlet weak var mailLabel: UILabel! {
+        didSet {
+            mailLabel.text = NSLocalizedString("user_form_mail_label", comment: "")
+        }
+    }
+    @IBOutlet weak var addressLabel: UILabel! {
+        didSet {
+            addressLabel.text = NSLocalizedString("user_form_address_label", comment: "")
+        }
+        
+    }
+    @IBOutlet weak var nameLabel: UILabel! {
+        didSet {
+            nameLabel.text = NSLocalizedString("user_form_full_name_label", comment: "")
+        }
+    }
+    @IBOutlet weak var userTitleLabel: UILabel! {
+        didSet {
+            userTitleLabel.text = NSLocalizedString("user_form_user_title", comment: "")
+        }
+    }
     
     @IBOutlet weak var inputFuelType: UITextField!
     @IBOutlet weak var inputModel: UITextField!
@@ -48,6 +95,7 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
     @IBAction func scrollTapped(_ sender: Any) {
         view.endEditing(true)
     }
+    
     var presenter: UserPresenterContract?
     
     @IBAction func sendAction(_ sender: Any) {
@@ -67,8 +115,7 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
         }
         
         presenter?.viewDidLoad()
-
-        
+  
     }
     
     func configure(with viewModel: UserViewModel) {
@@ -158,16 +205,16 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
     
     func showSendError() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Se ha producido un error", message: "Debe completar todos los campos", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            let alert = UIAlertController(title: NSLocalizedString("user_form_alert_error", comment: ""), message: NSLocalizedString("user_form_alert_complete", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
             self.present(alert, animated: true)
         }
     }
     
     func showSaveSuccess() {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Operación realizada con éxito", message: "Los datos se han guardado correctamente", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            let alert = UIAlertController(title: NSLocalizedString("user_form_alert_success", comment: ""), message: NSLocalizedString("user_form_alert_saved", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
             self.present(alert, animated: true)
         }
     }

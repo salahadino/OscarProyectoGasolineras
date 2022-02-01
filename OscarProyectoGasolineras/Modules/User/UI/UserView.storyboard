@@ -280,12 +280,21 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addressLabel" destination="2sj-Mq-5fu" id="YYQ-gf-Ufw"/>
+                        <outlet property="carTitleLabel" destination="acM-ty-ZGF" id="Xb5-kf-50h"/>
+                        <outlet property="fuelLabel" destination="KFm-Wu-lbx" id="ZLZ-dp-sZ8"/>
                         <outlet property="inputAddress" destination="8gh-5O-rvS" id="ygT-H7-dOS"/>
                         <outlet property="inputFuelType" destination="lND-Wd-rvU" id="KHI-k8-VbY"/>
                         <outlet property="inputMail" destination="Cep-7I-eTa" id="sy0-Qd-lEc"/>
                         <outlet property="inputModel" destination="btR-jb-x1k" id="vsV-jB-jBa"/>
                         <outlet property="inputName" destination="ggJ-sb-iE9" id="TRF-ue-SQL"/>
                         <outlet property="inputPhone" destination="nP8-QE-vmS" id="UVx-8B-KCr"/>
+                        <outlet property="mailLabel" destination="vnf-71-kMB" id="22K-pW-O6N"/>
+                        <outlet property="modelLabel" destination="dqv-gI-cZp" id="her-V4-reG"/>
+                        <outlet property="nameLabel" destination="1D7-ag-aCW" id="oX8-L7-bpS"/>
+                        <outlet property="phoneLabel" destination="xo1-aQ-Nlg" id="fKk-DW-4J1"/>
+                        <outlet property="sendButton" destination="JYV-13-lxZ" id="gp7-OD-pij"/>
+                        <outlet property="userTitleLabel" destination="tU6-mI-0zl" id="QLl-tJ-5dP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

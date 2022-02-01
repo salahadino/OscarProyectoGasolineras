@@ -20,6 +20,7 @@ protocol UserInteractorContract {
 protocol UserInteractorOutputContract {
     
     func didSave()
+    func didNotsave()
     func didLoad(viewModel: UserModel)
 }
 
@@ -39,11 +40,23 @@ class UserInteractor: UserInteractorContract {
     var userProvider: UserProviderContract?
     var output: UserInteractorOutputContract?
     
+//    func saveData(with userModel: UserModel) {
+//        userProvider?.saveUserToDisk(with: userModel, { result in
+//            if result {
+//                print(userModel)
+//                self.output?.didSave()
+//            }
+//        })
+//            
+//    }
+    
     func saveData(with userModel: UserModel) {
         userProvider?.saveUserToDisk(with: userModel, { result in
-            if result {
-                print(userModel)
-                self.output?.didSave()
+            switch result {
+            case .success(true): self.output?.didSave()
+            case .failure: self.output?.didNotsave()
+            case .success(false):
+                self.output?.didNotsave()
             }
         })
             
