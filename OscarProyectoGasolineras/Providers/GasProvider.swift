@@ -18,10 +18,8 @@ protocol GasProviderContract {
 }
 
 class NetworkGasListProvider: GasProviderContract {
+    
     func getGasolinerasList(_ completion: @escaping (Result<[ListaEESSPrecio], GasProviderError>) -> ()) {
-        
-       
-        
         guard let url = URL(string: "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/") else {
             completion(.failure(.badURL))
             
@@ -34,14 +32,14 @@ class NetworkGasListProvider: GasProviderContract {
     
             switch response.result {
 
-            case .success(let gasolineras): completion(.success(gasolineras.listaEESSPrecio))
+            case .success(var gasolineras):
+                gasolineras.listaEESSPrecio.removeAll() {$0.precioGLP == ""}
+                completion(.success(gasolineras.listaEESSPrecio))
             case .failure(let error): completion(.failure(.generic(error)))
 
             }
         }.validate()
         
     }
-    
-    
     
 }

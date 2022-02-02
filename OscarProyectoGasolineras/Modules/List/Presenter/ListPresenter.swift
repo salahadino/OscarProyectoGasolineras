@@ -66,7 +66,6 @@ extension ListPresenter: ListInteractorOutputContract {
     func didFetch(gasolineras: [ListaEESSPrecio]) {
         
         self.gasolineras = gasolineras
-        self.gasolineras.removeAll() {$0.precioGLP == ""}
         
     }
     

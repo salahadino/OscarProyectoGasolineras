@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol DetailInteractorContract {
+protocol DetailInteractorContract: AnyObject {
     
     var output: DetailInteractorOutputContract? {get set}
     
@@ -15,13 +15,13 @@ protocol DetailInteractorContract {
     
 }
 
-protocol DetailInteractorOutputContract {
+protocol DetailInteractorOutputContract: AnyObject {
     func didFetch(gas: [ListaEESSPrecio])
     func fetchDidFail()
 }
 
 class DetailInteractor: DetailInteractorContract {
-    var output: DetailInteractorOutputContract?
+    weak var output: DetailInteractorOutputContract?
     var gasProvider: GasProviderContract?
     
     func fetchGasolineras() {

@@ -30,7 +30,7 @@ class ListView: UIViewController, ListViewContract {
         tableView.dataSource = self
         tableView.delegate = self
         presenter?.viewDidLoad()
-        self.title = "Gasolineras con GLP"
+        self.title = NSLocalizedString("tab_list", comment: "")
     }
     
     

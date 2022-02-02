@@ -19,8 +19,8 @@ class InitialControllerBuilder {
         let navigationController = UINavigationController(rootViewController: listViewController)
         let userNavigationController = UINavigationController(rootViewController: userViewController)
         
-        navigationController.tabBarItem = UITabBarItem(title: "Gasolineras", image: UIImage.init(systemName: "list.bullet"), tag: 1)
-        userNavigationController.tabBarItem = UITabBarItem(title: "Usuario", image: UIImage.init(systemName: "person"), tag: 0)
+        navigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("tab_list", comment: ""), image: UIImage.init(systemName: "list.bullet"), tag: 1)
+        userNavigationController.tabBarItem = UITabBarItem(title: NSLocalizedString("tab_user", comment: ""), image: UIImage.init(systemName: "person"), tag: 0)
         
         
         let tabBarcontroller = UITabBarController()

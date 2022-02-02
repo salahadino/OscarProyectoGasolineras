@@ -26,7 +26,7 @@ protocol UserPresenterContract: AnyObject {
 
 
 class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
-  
+   
     var interactor: UserInteractorContract?
     weak var view: UserViewContract?
     
@@ -85,6 +85,9 @@ class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
     
     func didLoad(viewModel: UserModel) {
         view?.configure(with: UserViewModel(name: viewModel.name, address: viewModel.address, mail: viewModel.mail, phone: viewModel.phone, model: viewModel.model, fuel: viewModel.fuel))
+    }
+    func didNotLoad() {
+        print("No se cargaron los datos")
     }
     
 }

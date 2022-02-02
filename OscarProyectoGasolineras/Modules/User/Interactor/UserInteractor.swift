@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol UserInteractorContract {
+protocol UserInteractorContract: AnyObject {
     
     var output: UserInteractorOutputContract? {get set}
     
@@ -17,11 +17,12 @@ protocol UserInteractorContract {
     
 }
 
-protocol UserInteractorOutputContract {
+protocol UserInteractorOutputContract: AnyObject {
     
     func didSave()
     func didNotsave()
     func didLoad(viewModel: UserModel)
+    func didNotLoad()
 }
 
 class UserInteractor: UserInteractorContract {
@@ -29,26 +30,17 @@ class UserInteractor: UserInteractorContract {
     private var userModel = UserModel()
     
     func loadData() {
-        userProvider?.loadUserFromDisk({ user in
-            guard let user = user else {return}
-            self.userModel = user
-            self.output?.didLoad(viewModel: user)
-            
+        userProvider?.loadUserFromDisk({ result in
+            switch result {
+            case .success(let user): self.output?.didLoad(viewModel: user ?? UserModel(name: "", address: "", mail: "", phone: "", model: "", fuel: ""))
+            case .failure: self.output?.didNotLoad()
+            }
+           
         })
     }
     
     var userProvider: UserProviderContract?
-    var output: UserInteractorOutputContract?
-    
-//    func saveData(with userModel: UserModel) {
-//        userProvider?.saveUserToDisk(with: userModel, { result in
-//            if result {
-//                print(userModel)
-//                self.output?.didSave()
-//            }
-//        })
-//            
-//    }
+    weak var output: UserInteractorOutputContract?
     
     func saveData(with userModel: UserModel) {
         userProvider?.saveUserToDisk(with: userModel, { result in
@@ -61,6 +53,5 @@ class UserInteractor: UserInteractorContract {
         })
             
     }
-    
     
 }
