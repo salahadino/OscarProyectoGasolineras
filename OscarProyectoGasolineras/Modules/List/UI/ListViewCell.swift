@@ -37,7 +37,12 @@ class ListViewCell: UITableViewCell {
         precio.text = viewModel.precio
         localidad.text = viewModel.localidad
         rotulo.text = viewModel.rotulo
-        logo.image = viewModel.logo
+        if viewModel.logo != nil {
+            logo.image = viewModel.logo
+        } else {
+            logo.image = UIImage(named: "nologo")
+        }
+        
         
         
     }

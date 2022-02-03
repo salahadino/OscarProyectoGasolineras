@@ -46,7 +46,6 @@ class DetailPresenter: DetailPresenterContract {
         interactor?.fetchGasolineras()
         
     }
-    
   
 }
 

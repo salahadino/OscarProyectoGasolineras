@@ -27,6 +27,9 @@ protocol UserInteractorOutputContract: AnyObject {
 
 class UserInteractor: UserInteractorContract {
     
+    var userProvider: UserProviderContract?
+    weak var output: UserInteractorOutputContract?
+    
     private var userModel = UserModel()
     
     func loadData() {
@@ -39,9 +42,7 @@ class UserInteractor: UserInteractorContract {
         })
     }
     
-    var userProvider: UserProviderContract?
-    weak var output: UserInteractorOutputContract?
-    
+  
     func saveData(with userModel: UserModel) {
         userProvider?.saveUserToDisk(with: userModel, { result in
             switch result {

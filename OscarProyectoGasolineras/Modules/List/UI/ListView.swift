@@ -15,7 +15,8 @@ protocol ListViewContract: AnyObject {
 }
 
 class ListView: UIViewController, ListViewContract {
-  
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var tableView: UITableView!
     
     var presenter: ListPresenterContract?
@@ -31,6 +32,8 @@ class ListView: UIViewController, ListViewContract {
         tableView.delegate = self
         presenter?.viewDidLoad()
         self.title = NSLocalizedString("tab_list", comment: "")
+        
+        searchBar.delegate = self
     }
     
     
@@ -68,5 +71,12 @@ extension ListView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.didSelectItem(at: indexPath)
         
+    }
+}
+
+extension ListView: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter?.didSearch(with: searchText)
     }
 }

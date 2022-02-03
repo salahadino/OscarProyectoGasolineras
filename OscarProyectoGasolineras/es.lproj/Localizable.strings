@@ -5,3 +5,19 @@
   Created by Oscar Cazallas Esteban on 1/2/22.
   
 */
+"user_form_user_title" = "Datos de usuario";
+"user_form_full_name_label" = "Nombre";
+"user_form_address_label" = "Dirección";
+"user_form_mail_label" = "Mail";
+"user_form_phone_label" = "Teléfono";
+"user_form_car_data" = "Datos del vehículo";
+"user_form_car_model" = "Modelo";
+"user_form_car_fuel_type" = "Combustible";
+"user_form_send_button" = "Enviar";
+"user_form_alert_accept" = "Aceptar";
+"user_form_alert_error" = "Error";
+"user_form_alert_complete" = "Debes rellenar todos los campos";
+"user_form_alert_success" = "Exito";
+"user_form_alert_saved" = "Los datos se guardaron correctamente";
+"tab_user" = "Usuario";
+"tab_list" = "Gasolineras";

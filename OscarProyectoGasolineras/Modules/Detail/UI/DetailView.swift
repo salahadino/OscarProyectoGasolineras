@@ -66,7 +66,12 @@ class DetailView: UIViewController, DetailViewContract {
         direccion.text = viewModel.direccion
         horario.text = viewModel.horario
         rotulo.text = viewModel.rotulo
-        logo.image = viewModel.logo
+        if viewModel.logo != nil {
+            logo.image = viewModel.logo
+        } else {
+            logo.image = UIImage(named: "nologo")
+        }
+        
 
     }
     

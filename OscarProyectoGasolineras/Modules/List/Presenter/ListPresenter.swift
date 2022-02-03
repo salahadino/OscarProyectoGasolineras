@@ -16,6 +16,8 @@ protocol ListPresenterContract: AnyObject {
     func cellViewModel(at indexPath: IndexPath) -> ListCellViewModel
     func didSelectItem(at indexPath: IndexPath)
     func viewDidLoad()
+    
+    func didSearch(with searchText: String)
    
 }
 
@@ -25,21 +27,53 @@ class ListPresenter: ListPresenterContract {
     var interactor: ListInteractorContract?
     var wireframe: ListWireframeContract?
     
+    private var filteredData: [ListaEESSPrecio]!
+    
     private var gasolineras = [ListaEESSPrecio]() {
         
         didSet {
+            filteredData = gasolineras
             view?.reloadData()
         }
     }
     
+    func didSearch(with searchText: String) {
+        
+        filteredData = []
+        print("Estoy buscando", searchText)
+        if searchText == "" {
+            filteredData = gasolineras
+        } else {
+            
+            filteredData = gasolineras.filter { (gasolinera: ListaEESSPrecio) -> Bool in
+                return gasolinera.localidad?.lowercased().contains(searchText.lowercased()) ?? false
+            }
+            
+        }
+       
+        
+        view?.reloadData()
+    }
+   
+    
     var numItems: Int {
-        return gasolineras.count
+        //return gasolineras.count
+        
+    
+        if filteredData == nil {
+            return gasolineras.count
+        } else {
+            return filteredData.count
+        }
+        
+        
         
     }
     
     
     func cellViewModel(at indexPath: IndexPath) -> ListCellViewModel {
-        let gasolinera = gasolineras[indexPath.row]
+        //let gasolinera = gasolineras[indexPath.row]
+        let gasolinera = filteredData[indexPath.row]
         return ListCellViewModel(logo: gasolinera.imagen, rotulo: gasolinera.rotulo ?? "", localidad: gasolinera.localidad, precio: gasolinera.precioGLP)
        
     }
