@@ -24,9 +24,8 @@ class ListInteractor: ListInteractorContract {
     var output: ListInteractorOutputContract?
     var gasProvider: GasProviderContract?
     
-    
+
     func fetchItems() {
-        
         gasProvider?.getGasolinerasList({ result in
             switch result {
             case .success(let gasolineras): self.output?.didFetch(gasolineras: gasolineras)

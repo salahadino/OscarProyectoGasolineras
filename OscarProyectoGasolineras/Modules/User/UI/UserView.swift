@@ -31,6 +31,8 @@ protocol UserViewContract: UIViewController {
     
     func showSendError()
     func showSaveSuccess()
+    func showSaveError()
+    func showLoadError()
   
 }
 
@@ -214,6 +216,21 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
     func showSaveSuccess() {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: NSLocalizedString("user_form_alert_success", comment: ""), message: NSLocalizedString("user_form_alert_saved", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func showSaveError() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: NSLocalizedString("user_form_alert_error", comment: ""), message: NSLocalizedString("user_form_alert_not_saved", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+    func showLoadError() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: NSLocalizedString("user_form_alert_error", comment: ""), message: NSLocalizedString("user_form_alert_not_loaded", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
             self.present(alert, animated: true)
         }

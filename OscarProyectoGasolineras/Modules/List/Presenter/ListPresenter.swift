@@ -40,46 +40,36 @@ class ListPresenter: ListPresenterContract {
     func didSearch(with searchText: String) {
         
         filteredData = []
-        print("Estoy buscando", searchText)
+    
         if searchText == "" {
             filteredData = gasolineras
         } else {
-            
             filteredData = gasolineras.filter { (gasolinera: ListaEESSPrecio) -> Bool in
                 return gasolinera.localidad?.lowercased().contains(searchText.lowercased()) ?? false
             }
-            
         }
-       
-        
         view?.reloadData()
     }
-   
     
     var numItems: Int {
-        //return gasolineras.count
-        
-    
+ 
         if filteredData == nil {
             return gasolineras.count
         } else {
             return filteredData.count
         }
         
-        
-        
     }
     
     
     func cellViewModel(at indexPath: IndexPath) -> ListCellViewModel {
-        //let gasolinera = gasolineras[indexPath.row]
         let gasolinera = filteredData[indexPath.row]
         return ListCellViewModel(logo: gasolinera.imagen, rotulo: gasolinera.rotulo ?? "", localidad: gasolinera.localidad, precio: gasolinera.precioGLP)
        
     }
     
     func didSelectItem(at indexPath: IndexPath) {
-        let gasolinera = gasolineras[indexPath.row]
+        let gasolinera = filteredData[indexPath.row]
         wireframe?.navigate(to: gasolinera)
         
     }
@@ -94,12 +84,12 @@ class ListPresenter: ListPresenterContract {
 
 extension ListPresenter: ListInteractorOutputContract {
     func fetchDidFail() {
-        print("Error")
+        view?.showLoadError()
     }
     
     func didFetch(gasolineras: [ListaEESSPrecio]) {
-        
         self.gasolineras = gasolineras
+        view?.stopIndicator()
         
     }
     

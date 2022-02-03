@@ -23,11 +23,8 @@ class DetailPresenter: DetailPresenterContract {
     var interactor: DetailInteractorContract?
     weak var view: DetailViewContract?
     var gasolineraABuscar: ListaEESSPrecio? {
-        
         didSet {
-            
             view?.reloadData()
-            
         }
     }
     
@@ -37,26 +34,25 @@ class DetailPresenter: DetailPresenterContract {
     
     
     func viewModel() -> DetailViewModel {
-        
         return DetailViewModel(rotulo: gasolineraABuscar?.rotulo, precio: gasolineraABuscar?.precioGLP, localidad: gasolineraABuscar?.localidad, direccion: gasolineraABuscar?.direccion, horario: gasolineraABuscar?.horario, logo: gasolineraABuscar?.imagen)
     }
     
     func viewDidLoad() {
         interactor?.output = self
         interactor?.fetchGasolineras()
-        
     }
-  
 }
 
 extension DetailPresenter: DetailInteractorOutputContract {
     func didFetch(gas: [ListaEESSPrecio]) {
         self.gasolineras = gas
         self.gasolineraABuscar = gas.first {$0.ideess == idGas}
+        view?.stopIndicator()
     }
     
     func fetchDidFail() {
-        print("Error")
+        view?.showLoadError()
+        
     }
     
 }

@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 class DetailBuilder {
-    
-    
+   
     func build(gasId: String) -> UIViewController {
         let viewController = DetailView.createFromStoryboard()
         let interactor = DetailInteractor()

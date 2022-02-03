@@ -19,5 +19,8 @@
 "user_form_alert_complete" = "Debes rellenar todos los campos";
 "user_form_alert_success" = "Exito";
 "user_form_alert_saved" = "Los datos se guardaron correctamente";
+"user_form_alert_not_saved" ="Los datos no se guardaron";
+"user_form_alert_not_loaded" ="Los datos no se cargaron";
 "tab_user" = "Usuario";
 "tab_list" = "Gasolineras";
+"search_placeholder" = "Introduzca una localidad";

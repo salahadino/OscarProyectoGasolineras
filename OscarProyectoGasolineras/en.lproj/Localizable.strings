@@ -19,5 +19,8 @@
 "user_form_alert_complete" = "You must complete all fields";
 "user_form_alert_success" = "Success";
 "user_form_alert_saved" = "Data saved successfully";
+"user_form_alert_not_saved" ="Data could not be saved";
+"user_form_alert_not_loaded" ="Data could not be loaded";
 "tab_user" = "User";
 "tab_list" = "Stations list";
+"search_placeholder" = "Enter a location";
