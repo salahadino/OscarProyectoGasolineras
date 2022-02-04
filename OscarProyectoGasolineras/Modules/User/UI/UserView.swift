@@ -178,8 +178,6 @@ class UserView: UIViewController, UITextFieldDelegate {
         return true
     }
     
-   
-    
 
 }
 
