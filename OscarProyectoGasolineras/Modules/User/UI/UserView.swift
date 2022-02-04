@@ -33,10 +33,16 @@ protocol UserViewContract: UIViewController {
     func showSaveSuccess()
     func showSaveError()
     func showLoadError()
-  
+    //PERMISSIONS
+    func setAllowed()
+    func setNotAllowed()
+    func openSettings()
+  //__________________
 }
 
 class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
+ 
+    
  
     @IBOutlet weak var sendButton: UIButton! {
         didSet {
@@ -87,6 +93,8 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
         }
     }
     
+    @IBOutlet weak var localizationLabel: UILabel!
+    @IBOutlet weak var permissionButton: UIButton!
     @IBOutlet weak var inputFuelType: UITextField!
     @IBOutlet weak var inputModel: UITextField!
     @IBOutlet weak var inputPhone: UITextField!
@@ -104,6 +112,13 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
         presenter?.didSend()
         
     }
+    
+    //PERMISSIONS
+    @IBAction func permissionPressed(_ sender: Any) {
+        presenter?.didPressPermissionsButton()
+    }
+    //-----------------
+    
     static func createFromStoryboard() -> UserView {
         
         return UIStoryboard(name: "UserView", bundle: .main).instantiateViewController(withIdentifier: "UserView") as! UserView
@@ -260,6 +275,27 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    func setAllowed() {
+        DispatchQueue.main.async {
+            self.permissionButton.isEnabled = false
+            self.localizationLabel.text = "Allowed"
+        }
+    }
+    
+    func setNotAllowed() {
+        DispatchQueue.main.async {
+            self.permissionButton.isEnabled = true
+            self.localizationLabel.text = "Not Allowed"
+        }
+    }
+    
+    func openSettings() {
+        DispatchQueue.main.async {
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }
+       
     }
     
 

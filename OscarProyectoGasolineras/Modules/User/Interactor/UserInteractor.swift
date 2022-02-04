@@ -6,7 +6,14 @@
 //
 
 import Foundation
+import CoreLocation
 
+
+//PERMISSIONS
+enum PermissionInteractorStatus {
+    case allowed, denied, unknown
+}
+//-----------------
 
 protocol UserInteractorContract: AnyObject {
     
@@ -14,6 +21,14 @@ protocol UserInteractorContract: AnyObject {
     
     func saveData(with: UserModel)
     func loadData()
+    
+    //PERMISSIONS
+  
+    var currentPermission: PermissionInteractorStatus {get}
+    func askForPermission()
+    //------------------
+    
+ 
     
 }
 
@@ -23,12 +38,38 @@ protocol UserInteractorOutputContract: AnyObject {
     func didNotsave()
     func didLoad(viewModel: UserModel)
     func didNotLoad()
+    
+    //PERMISSIONS
+    func didUpdatePermission(status: PermissionInteractorStatus)
+    //------------------
 }
 
-class UserInteractor: UserInteractorContract {
+class UserInteractor: NSObject, UserInteractorContract {
     
+ 
     var userProvider: UserProviderContract?
     weak var output: UserInteractorOutputContract?
+    
+    private let locationManager: CLLocationManager
+    init(locationManager: CLLocationManager = CLLocationManager()) {
+        self.locationManager = locationManager
+    }
+    
+    var currentPermission: PermissionInteractorStatus {
+        switch locationManager.authorizationStatus {
+        case .notDetermined: return .unknown
+        case .restricted, .denied: return .denied
+        case .authorizedAlways, .authorizedWhenInUse: return .allowed
+        @unknown default: return .unknown
+        }
+    }
+    
+    func askForPermission() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
+    
     
     private var userModel = UserModel()
     
@@ -53,6 +94,14 @@ class UserInteractor: UserInteractorContract {
             }
         })
             
+    }
+    
+}
+
+extension UserInteractor: CLLocationManagerDelegate {
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        output?.didUpdatePermission(status: currentPermission)
     }
     
 }

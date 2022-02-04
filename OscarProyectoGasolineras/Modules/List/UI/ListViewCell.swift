@@ -23,17 +23,16 @@ class ListViewCell: UITableViewCell {
     @IBOutlet weak var logo: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+
     }
     
     func configure(viewModel: ListCellViewModel) {
-
         precio.text = viewModel.precio
         localidad.text = viewModel.localidad
         rotulo.text = viewModel.rotulo
@@ -42,9 +41,7 @@ class ListViewCell: UITableViewCell {
         } else {
             logo.image = UIImage(named: "nologo")
         }
-        
-        
-        
+ 
     }
 
 }

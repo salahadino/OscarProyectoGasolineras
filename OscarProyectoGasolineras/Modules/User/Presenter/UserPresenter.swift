@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 protocol UserPresenterContract: AnyObject {
     
     var view: UserViewContract? {get set}
@@ -22,11 +23,16 @@ protocol UserPresenterContract: AnyObject {
     func didSend()
     
     func viewDidLoad()
+    
+    //PERMISSIONS
+    func didPressPermissionsButton()
+    //-----------------
 }
 
 
-class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
+class UserPresenter: UserPresenterContract {
    
+    
     var interactor: UserInteractorContract?
     weak var view: UserViewContract?
     
@@ -63,8 +69,16 @@ class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
     }
     
     func viewDidLoad() {
+       
         interactor?.output = self
         interactor?.loadData()
+        
+     
+        //PERMISSIONS
+        guard let status = interactor?.currentPermission else {return}
+        didUpdatePermission(status: status)
+        
+        //--------------
     }
     
     func didSend() {
@@ -74,6 +88,25 @@ class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
         }
         interactor?.saveData(with: userModel)
     }
+    
+  
+    
+    //PERMISSIONS
+    func didPressPermissionsButton() {
+        guard let status = interactor?.currentPermission else {return}
+        switch status {
+        case .allowed: break
+            
+        case .denied: view?.openSettings() 
+        case .unknown: interactor?.askForPermission()
+            
+        }
+    }
+    
+    //---------------------
+    
+}
+extension UserPresenter: UserInteractorOutputContract {
     
     func didSave() {
         view?.showSaveSuccess()
@@ -90,6 +123,15 @@ class UserPresenter: UserPresenterContract, UserInteractorOutputContract {
         view?.showLoadError()
     }
     
+    //PERMISSIONS
+    func didUpdatePermission(status: PermissionInteractorStatus) {
+        switch status {
+        case .allowed: view?.setAllowed()
+        case .denied, .unknown: view?.setNotAllowed()
+    
+        }
+    }
+    //----------------
 }
 
 

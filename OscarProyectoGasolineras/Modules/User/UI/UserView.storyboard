@@ -20,10 +20,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2YP-zR-aHz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="325"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="456.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rvM-YN-Cim">
-                                                <rect key="frame" x="5" y="5" width="404" height="315"/>
+                                                <rect key="frame" x="5" y="5" width="404" height="446.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tU6-mI-0zl">
                                                         <rect key="frame" x="0.0" y="0.0" width="404" height="20.5"/>
@@ -243,6 +243,44 @@
                                                             <constraint firstItem="JYV-13-lxZ" firstAttribute="leading" secondItem="MIC-6M-gqa" secondAttribute="leading" constant="20" symbolic="YES" id="tHx-jR-a1c"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGV-xw-ZA0">
+                                                        <rect key="frame" x="0.0" y="325" width="404" height="71"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6D-Zy-R22">
+                                                                <rect key="frame" x="20" y="20" width="364" height="31"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Permission"/>
+                                                                <connections>
+                                                                    <action selector="permissionPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PEX-Yl-6OO"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="V6D-Zy-R22" firstAttribute="leading" secondItem="bGV-xw-ZA0" secondAttribute="leading" constant="20" symbolic="YES" id="IwQ-yg-Bnl"/>
+                                                            <constraint firstItem="V6D-Zy-R22" firstAttribute="top" secondItem="bGV-xw-ZA0" secondAttribute="top" constant="20" symbolic="YES" id="X0w-ql-DBJ"/>
+                                                            <constraint firstAttribute="bottom" secondItem="V6D-Zy-R22" secondAttribute="bottom" constant="20" symbolic="YES" id="lI1-FZ-Yca"/>
+                                                            <constraint firstAttribute="trailing" secondItem="V6D-Zy-R22" secondAttribute="trailing" constant="20" symbolic="YES" id="sKF-gw-IUk"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylP-HP-3Rr">
+                                                        <rect key="frame" x="0.0" y="406" width="404" height="40.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Localization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLj-D4-YML">
+                                                                <rect key="frame" x="0.0" y="10" width="404" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="KLj-D4-YML" secondAttribute="trailing" id="78Q-zY-k2F"/>
+                                                            <constraint firstAttribute="bottom" secondItem="KLj-D4-YML" secondAttribute="bottom" constant="10" id="Tne-86-HYv"/>
+                                                            <constraint firstItem="KLj-D4-YML" firstAttribute="top" secondItem="ylP-HP-3Rr" secondAttribute="top" constant="10" id="qgR-P3-4IA"/>
+                                                            <constraint firstItem="KLj-D4-YML" firstAttribute="leading" secondItem="ylP-HP-3Rr" secondAttribute="leading" id="vV6-J9-y8L"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -289,9 +327,11 @@
                         <outlet property="inputModel" destination="btR-jb-x1k" id="vsV-jB-jBa"/>
                         <outlet property="inputName" destination="ggJ-sb-iE9" id="TRF-ue-SQL"/>
                         <outlet property="inputPhone" destination="nP8-QE-vmS" id="UVx-8B-KCr"/>
+                        <outlet property="localizationLabel" destination="KLj-D4-YML" id="TUd-u7-BuX"/>
                         <outlet property="mailLabel" destination="vnf-71-kMB" id="22K-pW-O6N"/>
                         <outlet property="modelLabel" destination="dqv-gI-cZp" id="her-V4-reG"/>
                         <outlet property="nameLabel" destination="1D7-ag-aCW" id="oX8-L7-bpS"/>
+                        <outlet property="permissionButton" destination="V6D-Zy-R22" id="2XG-9f-32V"/>
                         <outlet property="phoneLabel" destination="xo1-aQ-Nlg" id="fKk-DW-4J1"/>
                         <outlet property="sendButton" destination="JYV-13-lxZ" id="gp7-OD-pij"/>
                         <outlet property="userTitleLabel" destination="tU6-mI-0zl" id="QLl-tJ-5dP"/>
