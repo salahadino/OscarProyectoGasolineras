@@ -13,16 +13,16 @@ protocol ListWireframeContract {
     func navigate(to gas: ListaEESSPrecio)
 }
 
-class ListWireframe: ListWireframeContract {
+class ListWireframe {
     var view: UIViewController?
     
+}
+
+extension ListWireframe: ListWireframeContract {
     func navigate(to gas: ListaEESSPrecio) {
         DispatchQueue.main.async {
             let viewController = DetailBuilder().build(gasId: gas.ideess ?? "")
             self.view?.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
-    
-    
 }

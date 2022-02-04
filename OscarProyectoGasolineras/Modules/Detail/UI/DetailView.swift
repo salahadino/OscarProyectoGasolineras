@@ -26,7 +26,7 @@ protocol DetailViewContract: AnyObject {
     
 }
 
-class DetailView: UIViewController, DetailViewContract {
+class DetailView: UIViewController {
    
     var presenter: DetailPresenterContract?
     
@@ -56,24 +56,6 @@ class DetailView: UIViewController, DetailViewContract {
 
     }
     
-    func showLoadError() {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: NSLocalizedString("user_form_alert_error", comment: ""), message: NSLocalizedString("user_form_alert_not_loaded", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
-            self.present(alert, animated: true)
-        }
-    }
-   
-    func stopIndicator() {
-        activityIndicator.stopAnimating()
-    }
-    
-    func reloadData() {
-  
-        configure(with: presenter?.viewModel())
-
-    }
-    
     func configure(with viewModel: DetailViewModel?) {
         
         guard let viewModel = viewModel else {
@@ -92,6 +74,28 @@ class DetailView: UIViewController, DetailViewContract {
      
     }
  
+}
+
+
+extension DetailView: DetailViewContract {
+    func showLoadError() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: NSLocalizedString("user_form_alert_error", comment: ""), message: NSLocalizedString("user_form_alert_not_loaded", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+   
+    func stopIndicator() {
+        activityIndicator.stopAnimating()
+    }
+    
+    func reloadData() {
+  
+        configure(with: presenter?.viewModel())
+
+    }
+    
 }
 
 extension DetailView {

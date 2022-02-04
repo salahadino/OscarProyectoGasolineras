@@ -16,7 +16,7 @@ protocol ListViewContract: AnyObject {
 
 }
 
-class ListView: UIViewController, ListViewContract {
+class ListView: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var tableView: UITableView!
@@ -44,25 +44,6 @@ class ListView: UIViewController, ListViewContract {
        
     }
     
-   
-    func stopIndicator() {
-        activityIndicator.stopAnimating()
-    }
-  
-
-    func reloadData() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-    func showLoadError() {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: NSLocalizedString("user_form_alert_error", comment: ""), message: NSLocalizedString("user_form_alert_not_loaded", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
-            self.present(alert, animated: true)
-        }
-    }
     
 }
 
@@ -116,4 +97,29 @@ extension ListView {
         activityIndicator.startAnimating()
         
     }
+}
+
+extension ListView: ListViewContract {
+    
+   
+    func stopIndicator() {
+        activityIndicator.stopAnimating()
+    }
+  
+
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func showLoadError() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: NSLocalizedString("user_form_alert_error", comment: ""), message: NSLocalizedString("user_form_alert_not_loaded", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    
 }

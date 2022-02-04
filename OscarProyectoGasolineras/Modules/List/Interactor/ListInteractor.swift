@@ -10,7 +10,7 @@ import Foundation
 
 protocol ListInteractorContract {
     var output: ListInteractorOutputContract? {get set}
-    
+    var gasProvider: GasProviderContract? {get set}
     func fetchItems()
 }
 
@@ -20,11 +20,14 @@ protocol ListInteractorOutputContract {
 }
 
 
-class ListInteractor: ListInteractorContract {
+class ListInteractor {
     var output: ListInteractorOutputContract?
     var gasProvider: GasProviderContract?
-    
+     
+}
 
+extension ListInteractor: ListInteractorContract {
+    
     func fetchItems() {
         gasProvider?.getGasolinerasList({ result in
             switch result {
@@ -34,5 +37,5 @@ class ListInteractor: ListInteractorContract {
         })
         
     }
-    
 }
+

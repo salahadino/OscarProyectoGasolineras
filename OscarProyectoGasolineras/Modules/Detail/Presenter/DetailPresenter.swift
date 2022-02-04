@@ -19,7 +19,7 @@ protocol DetailPresenterContract: AnyObject {
     
 }
 
-class DetailPresenter: DetailPresenterContract {
+class DetailPresenter {
     var interactor: DetailInteractorContract?
     weak var view: DetailViewContract?
     var gasolineraABuscar: ListaEESSPrecio? {
@@ -32,6 +32,10 @@ class DetailPresenter: DetailPresenterContract {
     
     private var gasolineras = [ListaEESSPrecio]()
     
+  
+}
+
+extension DetailPresenter: DetailPresenterContract {
     
     func viewModel() -> DetailViewModel {
         return DetailViewModel(rotulo: gasolineraABuscar?.rotulo, precio: gasolineraABuscar?.precioGLP, localidad: gasolineraABuscar?.localidad, direccion: gasolineraABuscar?.direccion, horario: gasolineraABuscar?.horario, logo: gasolineraABuscar?.imagen)

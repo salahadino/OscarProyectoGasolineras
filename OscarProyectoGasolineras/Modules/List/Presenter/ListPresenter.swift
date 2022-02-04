@@ -21,7 +21,7 @@ protocol ListPresenterContract: AnyObject {
    
 }
 
-class ListPresenter: ListPresenterContract {
+class ListPresenter {
    
     weak var view: ListViewContract?
     var interactor: ListInteractorContract?
@@ -36,6 +36,24 @@ class ListPresenter: ListPresenterContract {
             view?.reloadData()
         }
     }
+    
+    
+}
+
+extension ListPresenter: ListInteractorOutputContract {
+    func fetchDidFail() {
+        view?.showLoadError()
+    }
+    
+    func didFetch(gasolineras: [ListaEESSPrecio]) {
+        self.gasolineras = gasolineras
+        view?.stopIndicator()
+        
+    }
+    
+}
+
+extension ListPresenter: ListPresenterContract {
     
     func didSearch(with searchText: String) {
         
@@ -80,17 +98,4 @@ class ListPresenter: ListPresenterContract {
         
     }
 
-}
-
-extension ListPresenter: ListInteractorOutputContract {
-    func fetchDidFail() {
-        view?.showLoadError()
-    }
-    
-    func didFetch(gasolineras: [ListaEESSPrecio]) {
-        self.gasolineras = gasolineras
-        view?.stopIndicator()
-        
-    }
-    
 }
