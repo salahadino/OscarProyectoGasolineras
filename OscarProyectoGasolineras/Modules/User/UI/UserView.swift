@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 struct UserViewModel {
     let name: String?
@@ -33,11 +34,12 @@ protocol UserViewContract: UIViewController {
     func showSaveSuccess()
     func showSaveError()
     func showLoadError()
-    //PERMISSIONS
+
     func setAllowed()
     func setNotAllowed()
     func openSettings()
-  //__________________
+
+
 }
 
 class UserView: UIViewController, UITextFieldDelegate {
@@ -112,11 +114,11 @@ class UserView: UIViewController, UITextFieldDelegate {
         
     }
     
-    //PERMISSIONS
+
     @IBAction func permissionPressed(_ sender: Any) {
         presenter?.didPressPermissionsButton()
     }
-    //-----------------
+
     
     static func createFromStoryboard() -> UserView {
         
@@ -131,6 +133,8 @@ class UserView: UIViewController, UITextFieldDelegate {
         }
         
         presenter?.viewDidLoad()
+        
+        self.title = NSLocalizedString("tab_user", comment: "")
   
     }
     
@@ -180,6 +184,7 @@ class UserView: UIViewController, UITextFieldDelegate {
 }
 
 extension UserView: UserViewContract {
+   
     
     func didValidateName(_ valid: Bool) {
         DispatchQueue.main.async {
@@ -287,14 +292,14 @@ extension UserView: UserViewContract {
     func setAllowed() {
         DispatchQueue.main.async {
             self.permissionButton.isEnabled = false
-            self.localizationLabel.text = "Allowed"
+            self.localizationLabel.text = NSLocalizedString("user_permission_allowed", comment: "")
         }
     }
     
     func setNotAllowed() {
         DispatchQueue.main.async {
             self.permissionButton.isEnabled = true
-            self.localizationLabel.text = "Not Allowed"
+            self.localizationLabel.text = NSLocalizedString("user_permission_not_allowed", comment: "")
         }
     }
     
@@ -304,6 +309,8 @@ extension UserView: UserViewContract {
         }
        
     }
+   
+    
 }
 
 

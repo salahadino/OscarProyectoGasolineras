@@ -13,7 +13,7 @@
 "user_form_car_data" = "Datos del vehículo";
 "user_form_car_model" = "Modelo";
 "user_form_car_fuel_type" = "Combustible";
-"user_form_send_button" = "Enviar";
+"user_form_send_button" = "Enviar formulario";
 "user_form_alert_accept" = "Aceptar";
 "user_form_alert_error" = "Error";
 "user_form_alert_complete" = "Debes rellenar todos los campos";
@@ -24,3 +24,5 @@
 "tab_user" = "Usuario";
 "tab_list" = "Gasolineras";
 "search_placeholder" = "Introduzca una localidad";
+"user_permission_allowed" = "Localización permitida";
+"user_permission_not_allowed" = "Localización no permitida";

@@ -13,7 +13,7 @@
 "user_form_car_data" = "Car data";
 "user_form_car_model" = "Car model";
 "user_form_car_fuel_type" = "Fuel type";
-"user_form_send_button" = "Send";
+"user_form_send_button" = "Send form";
 "user_form_alert_accept" = "OK";
 "user_form_alert_error" = "Error";
 "user_form_alert_complete" = "You must complete all fields";
@@ -24,3 +24,5 @@
 "tab_user" = "User";
 "tab_list" = "Stations list";
 "search_placeholder" = "Enter a location";
+"user_permission_allowed" = "Location permission allowed";
+"user_permission_not_allowed" = "Location permission not allowed";

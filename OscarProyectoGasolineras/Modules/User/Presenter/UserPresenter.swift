@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 protocol UserPresenterContract: AnyObject {
@@ -39,7 +40,8 @@ class UserPresenter {
 }
 
 extension UserPresenter: UserInteractorOutputContract {
-    
+ 
+   
     func didSave() {
         view?.showSaveSuccess()
     }
@@ -103,6 +105,7 @@ extension UserPresenter: UserPresenterContract {
      
         guard let status = interactor?.currentPermission else {return}
         didUpdatePermission(status: status)
+     
         
     }
     
