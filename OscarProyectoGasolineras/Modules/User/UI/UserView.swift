@@ -40,10 +40,9 @@ protocol UserViewContract: UIViewController {
   //__________________
 }
 
-class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
+class UserView: UIViewController, UITextFieldDelegate {
  
-    
- 
+   
     @IBOutlet weak var sendButton: UIButton! {
         didSet {
             sendButton.setTitle(NSLocalizedString("user_form_send_button", comment: ""), for: .normal)
@@ -148,6 +147,40 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
        
     }
     
+ 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case inputName: presenter?.didUpdateName(textField.text)
+        case inputAddress: presenter?.didUpdateAddress(textField.text)
+        case inputMail: presenter?.didUpdateMail(textField.text)
+        case inputPhone: presenter?.didUpdatePhone(textField.text)
+        case inputModel: presenter?.didUpdateModel(textField.text)
+        case inputFuelType: presenter?.didUpdateFuel(textField.text)
+        default: break
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case inputName: inputAddress.becomeFirstResponder()
+        case inputAddress: inputMail.becomeFirstResponder()
+        case inputMail: inputPhone.becomeFirstResponder()
+        case inputPhone: inputModel.becomeFirstResponder()
+        case inputModel: inputFuelType.becomeFirstResponder()
+        case inputFuelType: textField.resignFirstResponder()
+        default: break
+        }
+        
+        return true
+    }
+    
+   
+    
+
+}
+
+extension UserView: UserViewContract {
+    
     func didValidateName(_ valid: Bool) {
         DispatchQueue.main.async {
             if valid {
@@ -250,32 +283,6 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
             self.present(alert, animated: true)
         }
     }
-  
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        switch textField {
-        case inputName: presenter?.didUpdateName(textField.text)
-        case inputAddress: presenter?.didUpdateAddress(textField.text)
-        case inputMail: presenter?.didUpdateMail(textField.text)
-        case inputPhone: presenter?.didUpdatePhone(textField.text)
-        case inputModel: presenter?.didUpdateModel(textField.text)
-        case inputFuelType: presenter?.didUpdateFuel(textField.text)
-        default: break
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField {
-        case inputName: inputAddress.becomeFirstResponder()
-        case inputAddress: inputMail.becomeFirstResponder()
-        case inputMail: inputPhone.becomeFirstResponder()
-        case inputPhone: inputModel.becomeFirstResponder()
-        case inputModel: inputFuelType.becomeFirstResponder()
-        case inputFuelType: textField.resignFirstResponder()
-        default: break
-        }
-        
-        return true
-    }
     
     func setAllowed() {
         DispatchQueue.main.async {
@@ -297,8 +304,6 @@ class UserView: UIViewController, UserViewContract, UITextFieldDelegate {
         }
        
     }
-    
-
 }
 
 

@@ -9,11 +9,11 @@ import Foundation
 import CoreLocation
 
 
-//PERMISSIONS
+
 enum PermissionInteractorStatus {
     case allowed, denied, unknown
 }
-//-----------------
+
 
 protocol UserInteractorContract: AnyObject {
     
@@ -22,14 +22,9 @@ protocol UserInteractorContract: AnyObject {
     func saveData(with: UserModel)
     func loadData()
     
-    //PERMISSIONS
-  
     var currentPermission: PermissionInteractorStatus {get}
     func askForPermission()
-    //------------------
-    
- 
-    
+  
 }
 
 protocol UserInteractorOutputContract: AnyObject {
@@ -39,14 +34,12 @@ protocol UserInteractorOutputContract: AnyObject {
     func didLoad(viewModel: UserModel)
     func didNotLoad()
     
-    //PERMISSIONS
     func didUpdatePermission(status: PermissionInteractorStatus)
-    //------------------
+ 
 }
 
-class UserInteractor: NSObject, UserInteractorContract {
-    
- 
+class UserInteractor: NSObject{
+   
     var userProvider: UserProviderContract?
     weak var output: UserInteractorOutputContract?
     
@@ -54,11 +47,28 @@ class UserInteractor: NSObject, UserInteractorContract {
     init(locationManager: CLLocationManager = CLLocationManager()) {
         self.locationManager = locationManager
     }
-    
-    
-    
-  
+   
     private var userModel = UserModel()
+    
+    
+}
+
+extension UserInteractor: CLLocationManagerDelegate {
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        output?.didUpdatePermission(status: currentPermission)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation: CLLocation = locations[0] as CLLocation
+        
+        print("user latitude = \(userLocation.coordinate.latitude)")
+        print("user longitude = \(userLocation.coordinate.longitude)")
+    }
+    
+}
+
+extension UserInteractor: UserInteractorContract {
     
     func loadData() {
         userProvider?.loadUserFromDisk({ result in
@@ -83,6 +93,12 @@ class UserInteractor: NSObject, UserInteractorContract {
             
     }
     
+    func askForPermission() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
     var currentPermission: PermissionInteractorStatus {
         switch locationManager.authorizationStatus {
         case .notDetermined: return .unknown
@@ -91,27 +107,4 @@ class UserInteractor: NSObject, UserInteractorContract {
         @unknown default: return .unknown
         }
     }
-    
-    func askForPermission() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-}
-
-extension UserInteractor: CLLocationManagerDelegate {
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        output?.didUpdatePermission(status: currentPermission)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation: CLLocation = locations[0] as CLLocation
-        
-        print("user latitude = \(userLocation.coordinate.latitude)")
-        print("user longitude = \(userLocation.coordinate.longitude)")
-    }
-    
 }

@@ -24,20 +24,48 @@ protocol UserPresenterContract: AnyObject {
     
     func viewDidLoad()
     
-    //PERMISSIONS
     func didPressPermissionsButton()
-    //-----------------
+ 
 }
 
 
-class UserPresenter: UserPresenterContract {
-   
-    
+class UserPresenter {
+  
     var interactor: UserInteractorContract?
     weak var view: UserViewContract?
     
     private var userModel = UserModel() 
     
+}
+
+extension UserPresenter: UserInteractorOutputContract {
+    
+    func didSave() {
+        view?.showSaveSuccess()
+    }
+    
+    func didNotsave() {
+        view?.showSaveError()
+    }
+    
+    func didLoad(viewModel: UserModel) {
+        view?.configure(with: UserViewModel(name: viewModel.name, address: viewModel.address, mail: viewModel.mail, phone: viewModel.phone, model: viewModel.model, fuel: viewModel.fuel))
+    }
+    func didNotLoad() {
+        view?.showLoadError()
+    }
+    
+    func didUpdatePermission(status: PermissionInteractorStatus) {
+        switch status {
+        case .allowed: view?.setAllowed()
+        case .denied, .unknown: view?.setNotAllowed()
+    
+        }
+    }
+
+}
+extension UserPresenter: UserPresenterContract {
+ 
     func didUpdateName(_ name: String?) {
         userModel.name = name
         view?.didValidateName(userModel.isValidName)
@@ -72,13 +100,10 @@ class UserPresenter: UserPresenterContract {
        
         interactor?.output = self
         interactor?.loadData()
-        
      
-        //PERMISSIONS
         guard let status = interactor?.currentPermission else {return}
         didUpdatePermission(status: status)
         
-        //--------------
     }
     
     func didSend() {
@@ -89,49 +114,18 @@ class UserPresenter: UserPresenterContract {
         interactor?.saveData(with: userModel)
     }
     
-  
     
-    //PERMISSIONS
     func didPressPermissionsButton() {
         guard let status = interactor?.currentPermission else {return}
         switch status {
         case .allowed: break
             
-        case .denied: view?.openSettings() 
+        case .denied: view?.openSettings()
         case .unknown: interactor?.askForPermission()
             
         }
     }
-    
-    //---------------------
-    
-}
-extension UserPresenter: UserInteractorOutputContract {
-    
-    func didSave() {
-        view?.showSaveSuccess()
-    }
-    
-    func didNotsave() {
-        view?.showSaveError()
-    }
-    
-    func didLoad(viewModel: UserModel) {
-        view?.configure(with: UserViewModel(name: viewModel.name, address: viewModel.address, mail: viewModel.mail, phone: viewModel.phone, model: viewModel.model, fuel: viewModel.fuel))
-    }
-    func didNotLoad() {
-        view?.showLoadError()
-    }
-    
-    //PERMISSIONS
-    func didUpdatePermission(status: PermissionInteractorStatus) {
-        switch status {
-        case .allowed: view?.setAllowed()
-        case .denied, .unknown: view?.setNotAllowed()
-    
-        }
-    }
-    //----------------
+
 }
 
 
