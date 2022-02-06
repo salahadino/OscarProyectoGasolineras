@@ -99,14 +99,12 @@ extension UserPresenter: UserPresenterContract {
     }
     
     func viewDidLoad() {
-       
         interactor?.output = self
         interactor?.loadData()
      
         guard let status = interactor?.currentPermission else {return}
         didUpdatePermission(status: status)
      
-        
     }
     
     func didSend() {

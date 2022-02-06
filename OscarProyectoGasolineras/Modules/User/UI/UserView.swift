@@ -257,6 +257,7 @@ extension UserView: UserViewContract {
     }
     
     func showSendError() {
+        
         DispatchQueue.main.async {
             let alert = UIAlertController(title: NSLocalizedString("user_form_alert_error", comment: ""), message: NSLocalizedString("user_form_alert_complete", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("user_form_alert_accept", comment: ""), style: .default))
